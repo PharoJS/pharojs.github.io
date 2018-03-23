@@ -10,6 +10,7 @@
 	<center><a href="http://pharojs.org"><img src="img/pharoJsLogo.png"></a></center>
 
 <ul>
+	<li><a href="#safariOperationInscureError">PharoJS tests and playground raise on Safari error: <code>SecurityError (DOM Exception 18): The operation is insecure</code></a></li>
 	<li><a href="#install">How do I install PharoJS?</a></li>
 	<li><a href="#prebuiltImage">Is there a PharoJS pre-builtImage?</a></li>
 	<li><a href="#install">How do I install PharoJS?</a></li>
@@ -19,8 +20,19 @@
 	<li><a href="#swag">Are there any PharoJS goodies (Shirts, Mugs...)?</a></li>
 </ul>
 
+<h2><a name="safariOperationInscureError">PharoJS tests and playground raise on Safari error: <code>SecurityError (DOM Exception 18): The operation is insecure</code></a></h2>
+<p>This error prevents running PharoJS tests with Safari as a default browser. This problem also arises when opening a PharoJS playground on a app (e.g. `PjCounterBrowserApp`).</p>
+
+<p>The cause of the bug is that currently, we open HTML files from the disk. This works fine with Firefox and Chrome. But, <a href="https://stackoverflow.com/questions/24997292/localstorage-access-from-local-file">Safari's new security system forbids accessing JS global `localStorage` when the HTML or the JS code is loaded from <code>file://</code></a></p>
+
+<p>Luckily, there is a workaround. First, ensure you have the <a href="https://developer.apple.com/safari/tools/">Safari developer tools installed</a>. Then, in the `Develop` menu check the "Disable local file restrictions"  item.</p>
+
+<p>This is needed only during development. Once your app is ready for production, you export the code and make available on a server. You should not experience the issue.</p>
+
+<p>Don't forget that PharoJS allows building HTML apps. Thus, if you require accessing sensitive resources, you are likely to have to define a <a href="https://content-security-policy.com/">content security policy</a> in your HTML file using the <code>meta</code> tag. You can find some examples in <a href="https://stackoverflow.com/questions/30280370/how-does-content-security-policy-work">the Stack overflow response addressing this question</a></p>
+	
 <h2><a name="install">How do I install PharoJS?</a></h2>
-<p>Install can be done inside a <a title="Download Pharo" href="http://pharo.org/download" target="_blank">Pharo image</a> by evaluating the following in a playground:
+<p>Install can be done inside a <a title="Download Pharo" href="http://pharo.org/download" target="_blank">Pharo 5 image</a> by evaluating the following in a playground:
 
 <br><br><code>
 Gofer it<br>
@@ -31,8 +43,7 @@ loadBleedingEdge.<br>
 
 This will install the most recent public version. To install the latest stable version, please use <code>loadStable</code> instead of <code>loadBleedingEdge</code>.</p>
 
-<h2><a name="prebuiltImage">Is there a PharoJS pre-builtImage?</a></h2>
-<p><a href="PharoJS-PreBuiltImage+Vm.zip">Download here a Zip of a PharoJS pre-built image</a> with HTML code for examples. The Pharo virtual machines for Mac and Windows are also included in the zip archive.</p>
+Upon install, Pharo will download HTML code for examples. The are located in the <code>PharoJS-master</code> foloder along with the image and the change file. It contains subfolders for each example and test.</p>
 
 <h2><a name="htmlForTests">Where can I find the HTML code for App tests (e.g. PjCounterApp and PjMinimalApp)?</a></h2>
 Some tests require a folder with HTML + CSS + ... files. They can be found in the PharoJS Git repository: <a href="https://github.com/bouraqadi/PharoJS">https://github.com/bouraqadi/PharoJS</a>.
