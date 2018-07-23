@@ -1,8 +1,13 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>FAQ | PharoJS</title>
-	</head>
+<head>
+  <title>FAQ | PharoJS</title>
+<style>
+div.answer{display:none}
+.show>div.answer{display:block}
+</style>
+</head>
+
   <body>
     <script type="text/javascript"
             src="https://pharojs.atlassian.net/s/d41d8cd98f00b204e9800998ecf8427e-T/-3szkjr/b/c/ced29afba244973b16a7e99d069f29b8/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-US&collectorId=59e53daf"></script>
@@ -10,54 +15,69 @@
 	<center><a href="http://pharojs.org"><img src="img/pharoJsLogo.png"></a></center>
 
 <ul>
-	<li><a href="#safariOperationInscureError">PharoJS tests and playground raise on Safari error: <code>SecurityError (DOM Exception 18): The operation is insecure</code></a></li>
-	<li><a href="#install">How do I install PharoJS?</a></li>
-	<li><a href="#prebuiltImage">Is there a PharoJS pre-builtImage?</a></li>
-	<li><a href="#install">How do I install PharoJS?</a></li>
-	<li><a href="#htmlForTests">Where can I find the HTML code for App tests (e.g. PjCounterApp and PjMinimalApp)?</a></li>
-	<li><a href="#doc">Where can I find the PharoJS documentation?</a></li>
-	<li><a href="#demoEsug2016">Where can I download the ESUG 2016 Demo (Pharo 4 image + Web App + PhoneGap App)?</a></li>
-	<li><a href="#swag">Are there any PharoJS goodies (Shirts, Mugs...)?</a></li>
+  <li>Where can I find the PharoJS documentation?
+  <div class="answer">
+    The PharoJS documentation is <a href="doc.html">available at this linked page</a>. It includes (but not restricted to) conference papers and slides of talks presenting different facets of PharoJS.
+  </div>
+  </li>
+
+  <li>How do I install PharoJS?
+  <div class="answer">
+    <p>Install can be done inside a <a title="Download Pharo" href="http://pharo.org/download" target="_blank">Pharo 5 image</a> by evaluating the following in a playground:
+    <br><br><pre>
+    Gofer it
+    smalltalkhubUser: 'noury' project: 'PharoJS';
+    configurationOf: #PharoJS ;
+    loadBleedingEdge.
+    </pre>
+
+    This will install the most recent public version. To install the latest stable version, please use <code>loadStable</code> instead of <code>loadBleedingEdge</code>.</p>
+    
+    Upon install, Pharo will download HTML code for examples. The are located in the <code>PharoJS-master</code> foloder along with the image and the change file. It contains subfolders for each example and test.</p>
+  </div>
+  </li>
+
+  <!-- <li><a foo="#prebuiltImage">Is there a PharoJS pre-builtImage?</a></li> -->
+
+  <li>Where can I find the HTML code for App tests (e.g. PjCounterApp and PjMinimalApp)?
+  <div class="answer">
+    Some tests require a folder with HTML + CSS + ... files. They can be found in the PharoJS Git repository: <a href="https://github.com/bouraqadi/PharoJS">https://github.com/bouraqadi/PharoJS</a>.
+  </div>
+  </li>
+
+  <li>Where can I download the ESUG 2016 Demo (Pharo 4 image + Web App + PhoneGap App)?
+  <div class="answer">
+    Ready to use Pharo 4 image with for the demo of <a href="doc.html#esug2016Talk">the ESUG 2016 talk</a>. The zip file  includes the files (e.g. HTML) for the web app and for the PhoneGap mobile application [<a href="https://docs.google.com/uc?id=0B7fN7OYplsLmcG9Cb3pDcWVYS00&export=download" target="_blank">ZIP approx. 85 MB</a>]
+  </div>
+  </li>
+
+  <li>PharoJS tests and playground raise on Safari error: <code>SecurityError (DOM Exception 18): The operation is insecure</code>
+  <div class="answer">
+    <p>This error prevents running PharoJS tests with Safari as a default browser. This problem also arises when opening a PharoJS playground on a app (e.g. `PjCounterBrowserApp`).</p>
+    
+    <p>The cause of the bug is that currently, we open HTML files from the disk. This works fine with Firefox and Chrome. But, <a href="https://stackoverflow.com/questions/24997292/localstorage-access-from-local-file">Safari's new security system forbids accessing JS global `localStorage` when the HTML or the JS code is loaded from <code>file://</code></a></p>
+    
+    <p>Luckily, there is a workaround. First, ensure you have the <a href="https://developer.apple.com/safari/tools/">Safari developer tools installed</a>. Then, in the `Develop` menu check the "Disable local file restrictions"  item.</p>
+    
+    <p>This is needed only during development. Once your app is ready for production, you export the code and make available on a server. You should not experience the issue.</p>
+    
+    <p>Don't forget that PharoJS allows building HTML apps. Thus, if you require accessing sensitive resources, you are likely to have to define a <a href="https://content-security-policy.com/">content security policy</a> in your HTML file using the <code>meta</code> tag. You can find some examples in <a href="https://stackoverflow.com/questions/30280370/how-does-content-security-policy-work">the Stack overflow response addressing this question</a></p>
+  </div></li>
+
+  <li>Are there any PharoJS goodies (Shirts, Mugs...)?
+  <div class="answer">
+    Different PharoJS goodies are available. Please click on the picture below.
+    <center><a href="http://www.zazzle.com/collections/pharojs-119096008034094659" target="_blank"><img src="img/swag.jpg"></a></center>
+  </div>
+  </li>
+
 </ul>
 
-<h2><a name="safariOperationInscureError">PharoJS tests and playground raise on Safari error: <code>SecurityError (DOM Exception 18): The operation is insecure</code></a></h2>
-<p>This error prevents running PharoJS tests with Safari as a default browser. This problem also arises when opening a PharoJS playground on a app (e.g. `PjCounterBrowserApp`).</p>
-
-<p>The cause of the bug is that currently, we open HTML files from the disk. This works fine with Firefox and Chrome. But, <a href="https://stackoverflow.com/questions/24997292/localstorage-access-from-local-file">Safari's new security system forbids accessing JS global `localStorage` when the HTML or the JS code is loaded from <code>file://</code></a></p>
-
-<p>Luckily, there is a workaround. First, ensure you have the <a href="https://developer.apple.com/safari/tools/">Safari developer tools installed</a>. Then, in the `Develop` menu check the "Disable local file restrictions"  item.</p>
-
-<p>This is needed only during development. Once your app is ready for production, you export the code and make available on a server. You should not experience the issue.</p>
-
-<p>Don't forget that PharoJS allows building HTML apps. Thus, if you require accessing sensitive resources, you are likely to have to define a <a href="https://content-security-policy.com/">content security policy</a> in your HTML file using the <code>meta</code> tag. You can find some examples in <a href="https://stackoverflow.com/questions/30280370/how-does-content-security-policy-work">the Stack overflow response addressing this question</a></p>
-	
-<h2><a name="install">How do I install PharoJS?</a></h2>
-<p>Install can be done inside a <a title="Download Pharo" href="http://pharo.org/download" target="_blank">Pharo 5 image</a> by evaluating the following in a playground:
-
-<br><br><code>
-Gofer it<br>
-smalltalkhubUser: 'noury' project: 'PharoJS';<br>
-configurationOf: #PharoJS ;<br>
-loadBleedingEdge.<br>
-</code><br>
-
-This will install the most recent public version. To install the latest stable version, please use <code>loadStable</code> instead of <code>loadBleedingEdge</code>.</p>
-
-Upon install, Pharo will download HTML code for examples. The are located in the <code>PharoJS-master</code> foloder along with the image and the change file. It contains subfolders for each example and test.</p>
-
-<h2><a name="htmlForTests">Where can I find the HTML code for App tests (e.g. PjCounterApp and PjMinimalApp)?</a></h2>
-Some tests require a folder with HTML + CSS + ... files. They can be found in the PharoJS Git repository: <a href="https://github.com/bouraqadi/PharoJS">https://github.com/bouraqadi/PharoJS</a>.
-
-<h2><a name="doc">Where can I find the PharoJS documentation?</a></h2>
-The PharoJS documentation is <a href="doc.html">available in the dedicated page</a>. It includes (but not restricted to) conference papers and slides of talks presenting different facets of PharoJS.
-
-
-<h2><a name="demoEsug2016">Where can I download the ESUG 2016 Demo (Pharo 4 image + Web App + PhoneGap App)?</a></h2>
-Ready to use Pharo 4 image with for the demo of <a href="doc.html#esug2016Talk">the ESUG 2016 talk</a>. The zip file  includes the files (e.g. HTML) for the web app and for the PhoneGap mobile application [<a href="https://docs.google.com/uc?id=0B7fN7OYplsLmcG9Cb3pDcWVYS00&export=download" target="_blank">ZIP approx. 85 MB</a>]
-
-<h2><a name="swag">Are there any PharoJS goodies (Shirts, Mugs...)?</a></h2>
-Different PharoJS goodies are available. Please click on the picture below.
-<center><a href="http://www.zazzle.com/collections/pharojs-119096008034094659" target="_blank"><img src="img/swag.jpg"></a></center>
-
+<script>
+Array.slice(document.getElementsByClassName("answer")).forEach(function(div) {
+var node=div.parentNode;
+console.log(node);
+node.addEventListener('click',function(){node.classList.toggle('show');})})
+</script>
 </body>
 </html>
