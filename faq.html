@@ -243,7 +243,6 @@ Array.prototype.slice.call(document.getElementsByClassName("answer")).forEach(fu
 var node=div.parentNode;
 if (node.children[0].name==href) node.classList.add("show");
 node.addEventListener('click',function(){node.classList.toggle('show');});
-node.addEventListener('touchstart',function(){node.classList.toggle('show');});
 })})();
 </script>
 </body>
