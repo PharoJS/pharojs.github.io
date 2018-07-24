@@ -4,10 +4,10 @@
   <title>FAQ | PharoJS</title>
 <style>
 div.answer{display:none}
-li.show>div.answer{display:block;font-size:85%}
+li.show>div.answer{display:block}
 .openClose>.show{list-style-image: url('img/open.png')}
 .openClose>:not(.show){list-style-image: url('img/closed.png')}
-.openClose>li{font-size:150%;cursor:pointer;}
+.openClose>li>a{font-size:150%;cursor:pointer;}
 ul.openClose ul{list-style-image: initial;}
 </style>
 </head>
@@ -20,21 +20,21 @@ ul.openClose ul{list-style-image: initial;}
 
 <h2>General Questions</h2>
 <ul class="openClose">
-  <li>Where can I get help with PharoJS?
+  <li><a>Where can I get help with PharoJS?</a>
   <div class="answer">
     The best place is with the <a href="https://pharojs.slack.com">PharoJS Slack workspace</a>.
     To get an account there, either send a twitter direct-message to <a href="https://twitter.com/pharojs">@pharojs</a> or an email to <a href="email:pharojs@scs.ryerson.ca">pharojs@scs.ryerson.ca</a>.
   </div>
   </li>
 
-  <li>Where can I find the PharoJS documentation?
+  <li><a>Where can I find the PharoJS documentation?</a>
   <div class="answer">
     The PharoJS documentation is <a href="doc.html">available at this linked page</a>.
     It includes (but not restricted to) conference papers and slides of talks presenting different facets of PharoJS.
   </div>
   </li>
 
-  <li>How do I install PharoJS?
+  <li><a>How do I install PharoJS?</a>
   <div class="answer">
     <p>Install can be done inside a <a title="Download Pharo" href="http://pharo.org/download" target="_blank">Pharo 5 image</a> by evaluating the following in a playground:
     <pre>
@@ -57,34 +57,34 @@ ul.openClose ul{list-style-image: initial;}
   </div>
   </li>
 
-  <li>Does PharoJS work with Pharo6?
+  <li><a>Does PharoJS work with Pharo6?</a>
   <div class="answer">
     Pharo6 had some stability issues, so we elected to skip Pharo 6.
     PharoJS will be available on Pharo 7 shortly after it is available.
   </div>
   </li>
 
-  <!-- <li>Is there a PharoJS pre-builtImage?
+  <!-- <li><a>Is there a PharoJS pre-builtImage?</a>
   <div class="answer">
   </div>
   </li> -->
 
-  <li>Where can I find the HTML code for App tests (e.g. PjCounterApp and PjMinimalApp)?
+  <li><a>Where can I find the HTML code for App tests (e.g. PjCounterApp and PjMinimalApp)?</a>
   <div class="answer">
     Some tests require a folder with HTML + CSS + ... files. They can be found in the PharoJS Git repository: <a href="https://github.com/bouraqadi/PharoJS">https://github.com/bouraqadi/PharoJS</a>.
   </div>
   </li>
 
-  <li>Where can I download the ESUG 2016 Demo (Pharo 4 image + Web App + PhoneGap App)?
+  <li><a>Where can I download the ESUG 2016 Demo (Pharo 4 image + Web App + PhoneGap App)?</a>
   <div class="answer">
     A ready to use Pharo 4 image with the demo from <a href="doc.html#esug2016Talk">the ESUG 2016 talk</a>. The zip file  includes the files (e.g. HTML) for the web app and for the PhoneGap mobile application [<a href="https://docs.google.com/uc?id=0B7fN7OYplsLmcG9Cb3pDcWVYS00&export=download" target="_blank">ZIP approx. 85 MB</a>]
   </div>
   </li>
 
-  <li>Are there any PharoJS goodies (Shirts, Mugs...)?
+  <li><a>Are there any PharoJS goodies (Shirts, Mugs...)?</a>
   <div class="answer">
     Different PharoJS goodies are available. Please click on the picture below.
-    <center><a href="http://www.zazzle.com/collections/pharojs-119096008034094659" target="_blank"><img src="img/swag.jpg"></a></center>
+    <center><a onclick="" href="http://www.zazzle.com/collections/pharojs-119096008034094659" target="_blank"><img src="img/swag.jpg"></a></center>
   </div>
   </li>
 
@@ -92,7 +92,7 @@ ul.openClose ul{list-style-image: initial;}
 
 <h2>PharoJS code questions</h2>
 <ul class="openClose">
-  <li>How can I create a <code>KeyboardEvent</code> or <code>MouseEvent</code>?
+  <li><a>How can I create a <code>KeyboardEvent</code> or <code>MouseEvent</code>?</a>
   <div class="answer">
     <pre>
     window KeyboardEvent new: #keypress with: { #key -> #Enter. #keyCode -> 13. #which -> 13 } asDictionary
@@ -101,7 +101,7 @@ ul.openClose ul{list-style-image: initial;}
   </div>
   </li>
 
-  <li>How can I create a DOM object?
+  <li><a>How can I create a DOM object?</a>
   <div class="answer">
     <pre>
 	rectangle := document createElement: 'div'.
@@ -111,7 +111,7 @@ ul.openClose ul{list-style-image: initial;}
   </div>
   </li>
 
-  <li>How do I reference a field in a native Javascript object? Call a method?
+  <li><a>How do I reference a field in a native Javascript object? Call a method?</a>
   <div class="answer">
     <p>
     In most cases, simply treating it as a message send works.
@@ -139,7 +139,7 @@ ul.openClose ul{list-style-image: initial;}
   </div>
   </li>
   
-  <li>Why can't PharoJS do ...?
+  <li><a>Why can't PharoJS do ...?</a>
   <div class="answer">
     <p>
     The premise of PharoJS is that you can develop code in the Pharo IDE with the GUI in the browser, including running tests.
@@ -158,7 +158,7 @@ ul.openClose ul{list-style-image: initial;}
   </div>
   </li>
 
-  <li><a name="bridge">How</a> does the bridge work?
+  <li><a name="bridge">How does the bridge work?</a>
   <div class="answer">
     <p>
     The bridge is used during development to connect the running Pharo image and the running PharoJS code in the browser - but does not exist in production code.
@@ -191,7 +191,7 @@ ul.openClose ul{list-style-image: initial;}
   </div>
   </li>
 
-  <li><a name="addEventListener">Why</a> do I need to use <code>addEventListener:block:</code> to set event handlers?
+  <li><a name="addEventListener">Why do I need to use <code>addEventListener:block:</code> to set event handlers?</a>
   <div class="answer">
     The structure for callbacks is created by sending an <code>addEventListener:block:</code> message to a proxy (typically of a DOM object).
     The referenced Smalltalk block must be held as long as there are references to it on the browser.
@@ -201,7 +201,7 @@ ul.openClose ul{list-style-image: initial;}
   </div>
   </li>
 
-  <li><a name="differences">What</a> are the differences between normal Smalltalk and PharoJS Smalltalk?
+  <li><a name="differences">What are the differences between normal Smalltalk and PharoJS Smalltalk?</a>
   <div class="answer">
     We try very hard to make the translation from Smalltalk to Javascript seamless, but there are some differences that are either impossible to handle, or would be hugely inefficient:
     <ul>
@@ -218,7 +218,7 @@ ul.openClose ul{list-style-image: initial;}
 
 <h2>Dealing with errors</h2>
 <ul class="openClose">
-  <li>PharoJS tests and playground raise on Safari error: <code>SecurityError (DOM Exception 18): The operation is insecure</code>
+  <li><a>PharoJS tests and playground raise on Safari error: <code>SecurityError (DOM Exception 18): The operation is insecure</code></a>
   <div class="answer">
     <p>This error prevents running PharoJS tests with Safari as a default browser. This problem also arises when opening a PharoJS playground on a app (e.g. `PjCounterBrowserApp`).</p>
     
@@ -239,10 +239,12 @@ ul.openClose ul{list-style-image: initial;}
 (function(){
 var href=document.location.href;
 href=href.substring(href.indexOf('#')+1);
+console.log(href);
 Array.prototype.slice.call(document.getElementsByClassName("answer")).forEach(function(div) {
 var node=div.parentNode;
+console.log(node.children[0].name);
 if (node.children[0].name==href) node.classList.add("show");
-node.addEventListener("click",function(e){e.stopPropagation();e.preventDefault();node.classList.toggle("show");});
+node.children[0].addEventListener("click",function(e){e.stopPropagation();e.preventDefault();node.classList.toggle("show");});
 })})();
 </script>
 </body>
