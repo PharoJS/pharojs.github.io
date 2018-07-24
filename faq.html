@@ -244,7 +244,6 @@ var node=div.parentNode;
 function toggleShow(e){e.stopPropagation();e.preventDefault();node.classList.toggle('show');}
 if (node.children[0].name==href) node.classList.add("show");
 node.addEventListener('click',toggleShow);
-node.addEventListener('touchstart',toggleShow);
 })})();
 </script>
 </body>
