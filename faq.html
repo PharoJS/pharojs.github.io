@@ -6,8 +6,8 @@
 div.answer{display:none}
 li.show>div.answer{display:block;font-size:85%}
 ul.openClose>li.show{list-style-image: url('img/open.png')}
-ul.openClose>li{list-style-image: url('img/closed.png');
-font-size:150%}
+ul.openClose>li{list-style-image: url('img/closed.png');font-size:150%}
+ul.openClose ul{list-style-image: initial;}
 </style>
 </head>
 
@@ -19,25 +19,40 @@ font-size:150%}
 
 <h2>General Questions</h2>
 <ul class="openClose">
+  <li>Where can I get help with PharoJS?
+  <div class="answer">
+    The best place is with the <a href="https://pharojs.slack.com">PharoJS Slack workspace</a>.
+    To get an account there, either send a twitter direct-message to <a href="https://twitter.com/pharojs">@pharojs</a> or an email to <a href="email:pharojs@scs.ryerson.ca">pharojs@scs.ryerson.ca</a>.
+  </div>
+  </li>
+
   <li>Where can I find the PharoJS documentation?
   <div class="answer">
-    The PharoJS documentation is <a href="doc.html">available at this linked page</a>. It includes (but not restricted to) conference papers and slides of talks presenting different facets of PharoJS.
+    The PharoJS documentation is <a href="doc.html">available at this linked page</a>.
+    It includes (but not restricted to) conference papers and slides of talks presenting different facets of PharoJS.
   </div>
   </li>
 
   <li>How do I install PharoJS?
   <div class="answer">
     <p>Install can be done inside a <a title="Download Pharo" href="http://pharo.org/download" target="_blank">Pharo 5 image</a> by evaluating the following in a playground:
-    <br><br><pre>
+    <pre>
     Gofer it
     smalltalkhubUser: 'noury' project: 'PharoJS';
     configurationOf: #PharoJS ;
     loadBleedingEdge.
     </pre>
 
-    This will install the most recent public version. To install the latest stable version, please use <code>loadStable</code> instead of <code>loadBleedingEdge</code>.</p>
-    
-    Upon install, Pharo will download HTML code for examples. The are located in the <code>PharoJS-master</code> foloder along with the image and the change file. It contains subfolders for each example and test.</p>
+    This will install the most recent public version.
+    To install the latest stable version, please use <code>loadStable</code> instead of <code>loadBleedingEdge</code>.
+    </p>
+    <p>
+    Upon install, Pharo will download HTML code for examples.
+    The are located in the <code>PharoJS-master</code> foloder along with the image and the change file. It contains subfolders for each example and test.
+    </p>
+    <p>
+    After installation you should run all of the PharoJS test to verify that your setup is working correctly.
+    </p>
   </div>
   </li>
 
@@ -123,6 +138,81 @@ font-size:150%}
   </div>
   </li>
   
+  <li>Why can't PharoJS do ...?
+  <div class="answer">
+    <p>
+    The premise of PharoJS is that you can develop code in the Pharo IDE with the GUI in the browser, including running tests.
+    Then when you're finished, you can export the whole thing to Javascript and have it execute the same way (or similar, see the <a href="#differences">question about differences</a>).
+    </p>
+    <p>
+    To achieve this, we communicate across a bridge between the running Pharo image and the running browser (see the <a href="#bridge">question about the bridge</a>).
+    This means that there are limitations in how processing on the browser side can proceed.
+    Most paticularly, you can't call-back a block (and wait for the return value) from within code running on the browser.
+    The closest you can do is call a block, and pass it a continuation block as a parameter.
+    It could then run on the Pharo side, and call the browser block passing the result.
+    </p>
+    <p>
+    We control the transpilation to Javascript, but we have no control over the Pharo Smalltalk compilation, so we can't add any fundamentally new concept.
+    </p>
+  </div>
+  </li>
+
+  <li><a name="bridge">How</a> does the bridge work?
+  <div class="answer">
+    <p>
+    The bridge is used during development to connect the running Pharo image and the running PharoJS code in the browser - but does not exist in production code.
+    The bridge is implemented over a WebSocket which allows bi-directional asynchronous communication.
+    </p>
+    <p>
+    There are proxy objects on the Pharo side that represent objects on the browser.
+    Some of there are global proxies, such as <code>document</code>, <code>window</code>, etc.
+    When you send a message to a proxy, a DNU intervenes and sends the parameters across the bridge to the browser, which calls the method on the object referred to by the proxy, and returns the result.
+    <ul>
+      <li>
+      If that result is a simple value (number, boolean, string, nil) it is returned across the bridge to the Pharo side which has suspended your code, awaiting the response.
+      The response is converted to a Smalltalk value, and returned to your code.
+      </li>
+      <li>
+      If that result is not a simple value, a reference to that value is created (so it doesn't get garbage collected by the browser), and a reference is passed back across the bridge.
+      That reference is converted to a proxy, and that proxy is returned to your code.
+      </li>
+      <li>
+      When all references to that proxy have disappeared on the Pharo side, the browser side is told to remove the holding reference.
+      </li>
+    </ul>
+    </p>
+    <p>
+    The other main thing that comes across the bridge are callbacks.
+    A callback is a reflection of an event occuring on the broswer.
+    The structure for callbacks is created by sending an <code>addEventListener:block:</code> message to a proxy (see the <a name="addEventListener">question on this</a>).
+    In order to faithfully emulate the Javascript execution model, no callback can happen while an existing callback is executing, or while any initial interaction browser is taking place.
+    </p>
+  </div>
+  </li>
+
+  <li><a name="addEventListener">Why</a> do I need to use <code>addEventListener:block:</code> to set event handlers?
+  <div class="answer">
+    The structure for callbacks is created by sending an <code>addEventListener:block:</code> message to a proxy (typically of a DOM object).
+    The referenced Smalltalk block must be held as long as there are references to it on the browser.
+    Unfortunately, there isn't currently a weak data-structure available in browsers that would allow us reliably to clean these up.
+    So we resort to using reference counting, so you also need it use <code>addEventListener:block:</code> with a <code>nil</code> block to remove the callback.
+    This can lead to a memory leak, but since it only applies to development and debugging and doesn't affect production, this seems like a reasonable trade-off.
+  </div>
+  </li>
+
+  <li><a name="differences">What</a> are the differences between normal Smalltalk and PharoJS Smalltalk?
+  <div class="answer">
+    We try very hard to make the translation from Smalltalk to Javascript seamless, but there are some differences that are either impossible to handle, or would be hugely inefficient:
+    <ul>
+      <li>The numeric stack: in Javascript all numbers are IEEE <code>double</code>s, so there are no big-ints, or fractions.</li>
+      <li><code>thisContext</code> does not exist, so any method that references it will be uncompilable.</li>
+      <li><code>become:</code> is unsupported.</li>
+      <li>Primitives are not supported.</li>
+      <li>There are no processes.</li>
+    </ul>
+  </div>
+  </li>
+
 </ul>
 
 <h2>Dealing with errors</h2>
@@ -145,10 +235,13 @@ font-size:150%}
 </ul>
 
 <script>
+(function(){
+var href=document.location.href;
+href=href.substring(href.indexOf('#')+1);
 Array.slice(document.getElementsByClassName("answer")).forEach(function(div) {
 var node=div.parentNode;
-console.log(node);
-node.addEventListener('click',function(){node.classList.toggle('show');})})
+if (node.children[0].name==href) node.classList.add("show");
+node.addEventListener('click',function(){node.classList.toggle('show');})})})();
 </script>
 </body>
 </html>
