@@ -17,6 +17,7 @@ font-size:150%}
 	<center><a href="http://pharojs.org"><img src="img/pharoJsLogo.png" alt="PharoJS Logo"></a></center>
   	<h1>Frequently Asked Questions</h1>
 
+<h2>General Questions</h2>
 <ul class="openClose">
   <li>Where can I find the PharoJS documentation?
   <div class="answer">
@@ -40,7 +41,17 @@ font-size:150%}
   </div>
   </li>
 
-  <!-- <li><a foo="#prebuiltImage">Is there a PharoJS pre-builtImage?</a></li> -->
+  <li>Does PharoJS work with Pharo6?
+  <div class="answer">
+    Pharo6 had some stability issues, so we elected to skip Pharo 6.
+    PharoJS will be available on Pharo 7 shortly after it is available.
+  </div>
+  </li>
+
+  <!-- <li>Is there a PharoJS pre-builtImage?
+  <div class="answer">
+  </div>
+  </li> -->
 
   <li>Where can I find the HTML code for App tests (e.g. PjCounterApp and PjMinimalApp)?
   <div class="answer">
@@ -50,10 +61,72 @@ font-size:150%}
 
   <li>Where can I download the ESUG 2016 Demo (Pharo 4 image + Web App + PhoneGap App)?
   <div class="answer">
-    Ready to use Pharo 4 image with for the demo of <a href="doc.html#esug2016Talk">the ESUG 2016 talk</a>. The zip file  includes the files (e.g. HTML) for the web app and for the PhoneGap mobile application [<a href="https://docs.google.com/uc?id=0B7fN7OYplsLmcG9Cb3pDcWVYS00&export=download" target="_blank">ZIP approx. 85 MB</a>]
+    A ready to use Pharo 4 image with the demo from <a href="doc.html#esug2016Talk">the ESUG 2016 talk</a>. The zip file  includes the files (e.g. HTML) for the web app and for the PhoneGap mobile application [<a href="https://docs.google.com/uc?id=0B7fN7OYplsLmcG9Cb3pDcWVYS00&export=download" target="_blank">ZIP approx. 85 MB</a>]
   </div>
   </li>
 
+  <li>Are there any PharoJS goodies (Shirts, Mugs...)?
+  <div class="answer">
+    Different PharoJS goodies are available. Please click on the picture below.
+    <center><a href="http://www.zazzle.com/collections/pharojs-119096008034094659" target="_blank"><img src="img/swag.jpg"></a></center>
+  </div>
+  </li>
+
+</ul>
+
+<h2>PharoJS code questions</h2>
+<ul class="openClose">
+  <li>How can I create a <code>KeyboardEvent</code> or <code>MouseEvent</code>?
+  <div class="answer">
+    <pre>
+    window KeyboardEvent new: #keypress with: { #key -> #Enter. #keyCode -> 13. #which -> 13 } asDictionary
+    window MouseEvent new: #click
+    </pre>
+  </div>
+  </li>
+
+  <li>How can I create a DOM object?
+  <div class="answer">
+    <pre>
+	rectangle := document createElement: 'div'.
+	rectangle id: 'grn'.
+	document body appendChild: rectangle.
+    </pre>
+  </div>
+  </li>
+
+  <li>How do I reference a field in a native Javascript object? Call a method?
+  <div class="answer">
+    <p>
+    In most cases, simply treating it as a message send works.
+    <pre>
+	jsobj fieldName.             " equivalent to jsobj.fieldName "
+	jsobj fileName: 0.           " equivalent to jsobj.fieldName=0 "
+    </pre>
+    You do exactly the same to send a message
+    <pre>
+	jsobj methodName.            " equivalent to jsobj.methodName() "
+	jsobj methodName: 0.         " equivalent to jsobj.methodName(0) "
+	jsobj methodName: 0 foo: 42. " equivalent to jsobj.methodName(0,42) "
+	jsobj methodName: 0 bar: 42. " equivalent to jsobj.methodName(0,42) "
+    </pre>
+    Notice that the message name for multiple parameters is only matched to the first parameter, so the last 2 examples are functionally identical.
+    </p>
+    <p>
+    If the field is a method (function) then simply referencing it will call it, so you must use:
+    <pre>
+	jsobj instVarNamed:#count.
+	jsobj instVarNamed:#count put: 0.
+    </pre>
+    You can also use this to force creation of a slot.
+    </p>
+  </div>
+  </li>
+  
+</ul>
+
+<h2>Dealing with errors</h2>
+<ul class="openClose">
   <li>PharoJS tests and playground raise on Safari error: <code>SecurityError (DOM Exception 18): The operation is insecure</code>
   <div class="answer">
     <p>This error prevents running PharoJS tests with Safari as a default browser. This problem also arises when opening a PharoJS playground on a app (e.g. `PjCounterBrowserApp`).</p>
@@ -65,14 +138,9 @@ font-size:150%}
     <p>This is needed only during development. Once your app is ready for production, you export the code and make available on a server. You should not experience the issue.</p>
     
     <p>Don't forget that PharoJS allows building HTML apps. Thus, if you require accessing sensitive resources, you are likely to have to define a <a href="https://content-security-policy.com/">content security policy</a> in your HTML file using the <code>meta</code> tag. You can find some examples in <a href="https://stackoverflow.com/questions/30280370/how-does-content-security-policy-work">the Stack overflow response addressing this question</a></p>
-  </div></li>
-
-  <li>Are there any PharoJS goodies (Shirts, Mugs...)?
-  <div class="answer">
-    Different PharoJS goodies are available. Please click on the picture below.
-    <center><a href="http://www.zazzle.com/collections/pharojs-119096008034094659" target="_blank"><img src="img/swag.jpg"></a></center>
   </div>
   </li>
+
 
 </ul>
 
