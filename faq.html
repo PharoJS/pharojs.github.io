@@ -5,8 +5,9 @@
 <style>
 div.answer{display:none}
 li.show>div.answer{display:block;font-size:85%}
-ul.openClose>li.show{list-style-image: url('img/open.png')}
-ul.openClose>li{list-style-image: url('img/closed.png');font-size:150%;cursor:pointer;}
+.openClose>.show{list-style-image: url('img/open.png')}
+.openClose>:not(.show){list-style-image: url('img/closed.png')}
+.openClose>li{font-size:150%;cursor:pointer;}
 ul.openClose ul{list-style-image: initial;}
 </style>
 </head>
@@ -238,7 +239,7 @@ ul.openClose ul{list-style-image: initial;}
 (function(){
 var href=document.location.href;
 href=href.substring(href.indexOf('#')+1);
-Array.slice(document.getElementsByClassName("answer")).forEach(function(div) {
+Array.prototype.slice.call(document.getElementsByClassName("answer")).forEach(function(div) {
 var node=div.parentNode;
 if (node.children[0].name==href) node.classList.add("show");
 node.addEventListener('click',function(){node.classList.toggle('show');});
