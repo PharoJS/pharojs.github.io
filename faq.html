@@ -4,17 +4,20 @@
   <title>FAQ | PharoJS</title>
 <style>
 div.answer{display:none}
-.show>div.answer{display:block}
+li.show>div.answer{display:block;font-size:85%}
+ul.openClose>li.show{list-style-image: url('img/open.png')}
+ul.openClose>li{list-style-image: url('img/closed.png');
+font-size:150%}
 </style>
 </head>
 
   <body>
     <script type="text/javascript"
             src="https://pharojs.atlassian.net/s/d41d8cd98f00b204e9800998ecf8427e-T/-3szkjr/b/c/ced29afba244973b16a7e99d069f29b8/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-US&collectorId=59e53daf"></script>
-  	<h1>PharoJS FAQ</h1>
-	<center><a href="http://pharojs.org"><img src="img/pharoJsLogo.png"></a></center>
+	<center><a href="http://pharojs.org"><img src="img/pharoJsLogo.png" alt="PharoJS Logo"></a></center>
+  	<h1>Frequently Asked Questions</h1>
 
-<ul>
+<ul class="openClose">
   <li>Where can I find the PharoJS documentation?
   <div class="answer">
     The PharoJS documentation is <a href="doc.html">available at this linked page</a>. It includes (but not restricted to) conference papers and slides of talks presenting different facets of PharoJS.
