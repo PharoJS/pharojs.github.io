@@ -241,7 +241,9 @@ href=href.substring(href.indexOf('#')+1);
 Array.slice(document.getElementsByClassName("answer")).forEach(function(div) {
 var node=div.parentNode;
 if (node.children[0].name==href) node.classList.add("show");
-node.addEventListener('click',function(){node.classList.toggle('show');node.style.color="blue";})})})();
+node.addEventListener('click',function(){node.classList.toggle('show');});
+node.addEventListener('touchstart',function(){node.classList.toggle('show');});
+})})();
 </script>
 </body>
 </html>
