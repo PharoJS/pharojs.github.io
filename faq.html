@@ -251,7 +251,7 @@ ul.openClose ul{list-style-image: initial;}
     If you need them in a class that doesn't subclass that, add a <code>poolDictionaries:</code> parameter to your <code>subclass:instanceVariableNames:classVariableNames:package:</code> (see <code>PjBrowserApplication</code> for an example).
     </p>
     <p>
-    It you create your own globals, remember to run the class initializer for <code>PjProxyForGlobal</code> so that a proxy is available.
+    It you create your own globals, you should use the trait <code>PjTJavascriptGlobalsInitializer</code> which defines a class <code>initialize</code> method so that a proxy is available.
     </p>
   </div>
   </li>
