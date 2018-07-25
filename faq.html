@@ -167,7 +167,7 @@ ul.openClose ul{list-style-image: initial;}
     </p>
     <p>
     There are proxy objects on the Pharo side that represent objects on the browser.
-    Some of there are global proxies, such as <code>document</code>, <code>window</code>, etc. which are implemented as Javascript globals (see the <a href="globals">question on globals</a>).
+    Some of there are global proxies, such as <code>document</code>, <code>window</code>, etc. which are implemented as Javascript globals (see the <a href="#globals">question on globals</a>).
     When you send a message to a proxy, a DNU intervenes and sends the parameters across the bridge to the browser, which calls the method on the object referred to by the proxy, and returns the result.
     <ul>
       <li>
@@ -234,7 +234,7 @@ ul.openClose ul{list-style-image: initial;}
     <p>
     <a href="https://en.wikipedia.org/wiki/Polyfill_(programming)">A polyfill</a> is <a href="https://en.wikipedia.org/wiki/Shim_(computing)"> a code shim</a> that implements a feature on Javascript engines that do not otherwise support the feature.
     In PharoJS, polyfills add code at the beginning of the generated Javascript that does whatever is necessary to make a global value/class available in the Javascript engine.
-    As such a polyfill is a Javascript global (see the <a href="globals">question on globals</a>).
+    As such a polyfill is a Javascript global (see the <a href="#globals">question on globals</a>).
     </p>
     <p>
     To define a polyfill, a subclass of <code>PjJavascriptGlobals</code> must define one or more of <code>browserPolyfill:</code>, <code>domPolyfill:</code>, or <code>nodePolyfill:</code> to output the necessary Javascript to set up the polyfill.
