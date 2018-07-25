@@ -246,7 +246,7 @@ ul.openClose ul{list-style-image: initial;}
   <div class="answer">
     <p>
     PharoJS uses the Pharo Smalltalk pool dictionary facility to make Javascript globals available to code running in the Pharo image.
-    In particular groups of such symbols are defined in subclasses of <code>PjJavascriptGlobals</code> and initialized with proxy values (see the <a href="#bridge">question on the bridge) so they can be accessed.
+    In particular groups of such symbols are defined in subclasses of <code>PjJavascriptGlobals</code> and initialized with proxy values (see the <a href="#bridge">question on the bridge</a>) so they can be accessed.
     The appropriate globals are automatically available to subclasses of <code>PjApplication</code>.
     If you need them in a class that doesn't subclass that, add a <code>poolDictionaries:</code> parameter to your <code>subclass:instanceVariableNames:classVariableNames:package:</code> (see <code>PjBrowserApplication</code> for an example).
     </p>
