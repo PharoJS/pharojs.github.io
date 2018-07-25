@@ -2,6 +2,8 @@
 <html>
 <head>
   <title>FAQ | PharoJS</title>
+<meta name="description" content="PharoJS Frequently Asked Questions">
+<meta name="twitter:description" content="PharoJS Frequently Asked Questions">
 <style>
 div.answer{display:none}
 li.show>div.answer{display:block}
@@ -13,8 +15,7 @@ ul.openClose ul{list-style-image: initial;}
 </head>
 
   <body>
-    <script type="text/javascript"
-            src="https://pharojs.atlassian.net/s/d41d8cd98f00b204e9800998ecf8427e-T/-3szkjr/b/c/ced29afba244973b16a7e99d069f29b8/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-US&collectorId=59e53daf"></script>
+    <script type="text/javascript" src="https://pharojs.atlassian.net/s/d41d8cd98f00b204e9800998ecf8427e-T/-3szkjr/b/c/ced29afba244973b16a7e99d069f29b8/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-US&collectorId=59e53daf"></script>
 	<center><a href="http://pharojs.org"><img src="img/pharoJsLogo.png" alt="PharoJS Logo"></a></center>
   	<h1>Frequently Asked Questions</h1>
 
@@ -158,7 +159,7 @@ ul.openClose ul{list-style-image: initial;}
   </div>
   </li>
 
-  <li><a name="bridge">How does the bridge work?</a>
+  <li><a name="bridge">How does the bridge work? What are proxies?</a>
   <div class="answer">
     <p>
     The bridge is used during development to connect the running Pharo image and the running PharoJS code in the browser - but does not exist in production code.
@@ -166,7 +167,7 @@ ul.openClose ul{list-style-image: initial;}
     </p>
     <p>
     There are proxy objects on the Pharo side that represent objects on the browser.
-    Some of there are global proxies, such as <code>document</code>, <code>window</code>, etc.
+    Some of there are global proxies, such as <code>document</code>, <code>window</code>, etc. which are implemented as Javascript globals (see the <a href="globals">question on globals).
     When you send a message to a proxy, a DNU intervenes and sends the parameters across the bridge to the browser, which calls the method on the object referred to by the proxy, and returns the result.
     <ul>
       <li>
@@ -211,6 +212,47 @@ ul.openClose ul{list-style-image: initial;}
       <li>Primitives are not supported.</li>
       <li>There are no processes.</li>
     </ul>
+  </div>
+  </li>
+
+  <li><a>Can I generate code for NodeJS? Can I use Node modules?</a>
+  <div class="answer">
+    <p>
+    Yes, you certainly can use Node.
+    Many people would question the decision as they would prefer to provide the application in Pharo directly, with all the advantages that entails.
+    However, there are situations where deploying as Node is preferred (such as creating an Electron application - before you ask: we don't have that quite figured out yet, but we'd help someone who wants to).
+    </p>
+    <p>
+    Subclass <code>PjNodeApplication</code>.
+    To access modules, define a polyfill similar to <code>PjWebSocketPolyfill</code> (see the <a href="#polyfill">question on polyfills</a>).
+    </p>
+  </div>
+  </li>
+
+  <li><a name="polyfill">What are polyfills?</a>
+  <div class="answer">
+    <p>
+    <a href="https://en.wikipedia.org/wiki/Polyfill_(programming)">A polyfill</a> is <a href="https://en.wikipedia.org/wiki/Shim_(computing)"> a code shim</a> that implements a feature on Javascript engines that do not otherwise support the feature.
+    In PharoJS, polyfills add code at the beginning of the generated Javascript that does whatever is necessary to make a global value/class available in the Javascript engine.
+    As such a polyfill is a Javascript global (see the <a href="globals">question on globals).
+    </p>
+    <p>
+    To define a polyfill, a subclass of <code>PjJavascriptGlobals</code> must define one or more of <code>browserPolyfill:</code>, <code>domPolyfill:</code>, or <code>nodePolyfill:</code> to output the necessary Javascript to set up the polyfill.
+    </p>
+  </div>
+  </li>
+
+  <li><a name="globals">How do I access Javascript global values?</a>
+  <div class="answer">
+    <p>
+    PharoJS uses the Pharo Smalltalk pool dictionary facility to make Javascript globals available to code running in the Pharo image.
+    In particular groups of such symbols are defined in subclasses of <code>PjJavascriptGlobals</code> and initialized with proxy values (see the <a href="#bridge">question on the bridge) so they can be accessed.
+    The appropriate globals are automatically available to subclasses of <code>PjApplication</code>.
+    If you need them in a class that doesn't subclass that, add a <code>poolDictionaries:</code> parameter to your <code>subclass:instanceVariableNames:classVariableNames:package:</code> (see <code>PjBrowserApplication</code> for an example).
+    </p>
+    <p>
+    It you create your own globals, remember to run the class initializer for <code>PjProxyForGlobal</code> so that a proxy is available.
+    </p>
   </div>
   </li>
 
