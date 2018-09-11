@@ -14,7 +14,7 @@ ul.openClose ul{list-style-image: initial;}
 </style>
 </head>
 
-  <body>
+<body>
     <script type="text/javascript" src="https://pharojs.atlassian.net/s/d41d8cd98f00b204e9800998ecf8427e-T/-3szkjr/b/c/ced29afba244973b16a7e99d069f29b8/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-US&collectorId=59e53daf"></script>
 	<center><a href="http://pharojs.org"><img src="img/pharoJsLogo.png" alt="PharoJS Logo"></a></center>
   	<h1>Frequently Asked Questions</h1>
@@ -143,6 +143,14 @@ ul.openClose ul{list-style-image: initial;}
     </pre>
     You can also use this to force creation of a slot.
     </p>
+    <p>
+      There is a minor detail about Javascript "classes" such as <code>MouseEvent</code> because they are implemented as special Javascript functions, but usually you don't want to call them, you want to send them a <code>new</code> message.
+      So if the message name starts with an uppercase letter, it is treated as a value reference, rather than as a function.
+      This allows the following to work:
+      <pre>
+    window MouseEvent new: #click
+      </pre>
+      </p>
   </div>
   </li>
   
@@ -203,8 +211,8 @@ ul.openClose ul{list-style-image: initial;}
     The structure for callbacks is created by sending an <code>addEventListener:block:</code> message to a proxy (typically of a DOM object).
     The referenced Smalltalk block must be held as long as there are references to it on the browser.
     Unfortunately, there isn't currently a weak data-structure available in browsers that would allow us reliably to clean these up.
-    So we resort to using reference counting, so you also need it use <code>addEventListener:block:</code> with a <code>nil</code> block to remove the callback.
-    This can lead to a memory leak, but since it only applies to development and debugging and doesn't affect production, this seems like a reasonable trade-off.
+    So we resort to using reference counting, so you also need to use <code>addEventListener:block:</code> with a <code>nil</code> block to remove the callback.
+    Not explicitly removing a callback can lead to memory being tied up on the Pharo side until the bridge is closed, but seems like a reasonable trade-off.
   </div>
   </li>
 
@@ -308,3 +316,10 @@ a.addEventListener("click",function(e){showIt(a.href.substring(hash));});
 </script>
 </body>
 </html>
+<!--
+-*- Local Variables: 
+-*- coding: utf-8
+-*- mode: HTML
+-*- fill-column: 1000
+-*- End:
+-->
