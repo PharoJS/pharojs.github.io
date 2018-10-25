@@ -1,0 +1,18 @@
+.pjHeader{
+	text-align:center; 
+	width:100%; 
+	background-color: rgb(230,250,255); 
+	box-sizing:border-box; 
+	padding:15px;
+}
+
+.pjHeader img{
+	max-width:100%;
+	max-height:150px;
+}
+
+.pjHeader h1{
+	font-size: 200%; 
+	color: rgb(51,153,235);
+	font-style: italic;
+}
