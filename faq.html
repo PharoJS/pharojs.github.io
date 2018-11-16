@@ -123,12 +123,12 @@ ul.openClose ul{list-style-image: initial;}
   <li><a>How do I reference a field in a native Javascript object? Call a method?</a>
   <div class="answer">
     <p>
-    In most cases, simply treating it as a message send works.
+    In most cases, simply treating it as a message send works:
     <pre>
 	jsobj fieldName.             " equivalent to jsobj.fieldName "
-	jsobj fileName: 0.           " equivalent to jsobj.fieldName=0 "
+	jsobj fieldName: 0.          " equivalent to jsobj.fieldName=0 "
     </pre>
-    You do exactly the same to send a message
+    You do exactly the same to call a method:
     <pre>
 	jsobj methodName.            " equivalent to jsobj.methodName() "
 	jsobj methodName: 0.         " equivalent to jsobj.methodName(0) "
@@ -138,7 +138,7 @@ ul.openClose ul{list-style-image: initial;}
     Notice that the message name for multiple parameters is only matched to the first parameter, so the last 2 examples are functionally identical.
     </p>
     <p>
-    If the field is a method (function) then simply referencing it will call it, so you must use:
+    If the field is a method (function) then simply referencing it will call it, so to get or change the value you must use:
     <pre>
 	jsobj instVarNamed:#count.
 	jsobj instVarNamed:#count put: 0.
@@ -203,7 +203,7 @@ ul.openClose ul{list-style-image: initial;}
     The other main thing that comes across the bridge are callbacks.
     A callback is a reflection of an event occuring on the broswer.
     The structure for callbacks is created by sending an <code>addEventListener:block:</code> message to a proxy (see the <a href="#addEventListener">question on this</a>).
-    In order to faithfully emulate the Javascript execution model, no callback can happen while an existing callback is executing, or while any initial interaction browser is taking place.
+    In order to faithfully emulate the Javascript execution model, no callback can happen while an existing callback is executing, or while any initial interaction with the browser is taking place.
     </p>
   </div>
   </li>
@@ -214,7 +214,7 @@ ul.openClose ul{list-style-image: initial;}
     The referenced Smalltalk block must be held as long as there are references to it on the browser.
     Unfortunately, there isn't currently a weak data-structure available in browsers that would allow us reliably to clean these up.
     So we resort to using reference counting, so you also need to use <code>addEventListener:block:</code> with a <code>nil</code> block to remove the callback.
-    Not explicitly removing a callback can lead to memory being tied up on the Pharo side until the bridge is closed, but seems like a reasonable trade-off.
+    Not explicitly removing a callback can lead to memory being tied up on the Pharo side until the bridge is closed, but seems like a reasonable trade-off as it only applies during development.
   </div>
   </li>
 
@@ -231,6 +231,23 @@ ul.openClose ul{list-style-image: initial;}
   </div>
   </li>
 
+  <li><a name="importMethods">How do I reference methods from Pharo classes (like <code>Number class&gt;&gt;#primesUpTo:</code>?</a>
+  <div class="answer">
+    Unfortunately, “<em>automatically importing methods from Pharo classes for classes we have duplicated (like <code>Number</code>) or other classes without importing the whole class</em>” is on our todo list.
+    In the meantime, add the following to <code>PjNumber</code> class-side:
+    <pre>jsTranspilationImportMethodsNonstandard
+	&lt;pharoJsSkip&gt;
+	^ {
+		Number class -> #(primesUpTo: primesUpTo:do:).
+           }</pre>
+    This says to import those 2 methods from the <code>Number</code> class.
+    This is the user definable version of <code>jsTranspilationImportMethods</code> (for which <code>PjNumber</code> has quite a large implementation) which allows you to augment the list of methods that it imports.
+    <p>
+      We can't import all of e.g. <code>Number</code> or <code>Object</code>, because it would cause considerable code bloat in your application, and because there are methods in some of those classes that cannot be compiled (see the <a href="#differences">differences question</a>).
+    </p>
+  </div>
+  </li>
+
   <li><a>Can I generate code for NodeJS? Can I use Node modules?</a>
   <div class="answer">
     <p>
@@ -240,6 +257,8 @@ ul.openClose ul{list-style-image: initial;}
     </p>
     <p>
     Subclass <code>PjNodeApplication</code>.
+    </p>
+    <p>
     To access modules, define a polyfill similar to <code>PjWebSocketPolyfill</code> (see the <a href="#polyfill">question on polyfills</a>).
     </p>
   </div>
@@ -250,7 +269,7 @@ ul.openClose ul{list-style-image: initial;}
     <p>
     <a href="https://en.wikipedia.org/wiki/Polyfill_(programming)">A polyfill</a> is <a href="https://en.wikipedia.org/wiki/Shim_(computing)"> a code shim</a> that implements a feature on Javascript engines that do not otherwise support the feature.
     In PharoJS, polyfills add code at the beginning of the generated Javascript that does whatever is necessary to make a global value/class available in the Javascript engine.
-    As such a polyfill is a Javascript global (see the <a href="#globals">question on globals</a>).
+    As such, a polyfill is a Javascript global (see the <a href="#globals">question on globals</a>).
     </p>
     <p>
     To define a polyfill, a subclass of <code>PjJavascriptGlobals</code> must define one or more of <code>browserPolyfill:</code>, <code>domPolyfill:</code>, or <code>nodePolyfill:</code> to output the necessary Javascript to set up the polyfill.
@@ -284,7 +303,7 @@ ul.openClose ul{list-style-image: initial;}
     
     <p>Luckily, there is a workaround. First, ensure you have the <a href="https://developer.apple.com/safari/tools/">Safari developer tools installed</a>. Then, in the `Develop` menu check the "Disable local file restrictions"  item.</p>
     
-    <p>This is needed only during development. Once your app is ready for production, you export the code and make available on a server. You should not experience the issue.</p>
+    <p>This is needed only during development. Once your app is ready for production, you export the code and make it available on a server. You should not experience the issue.</p>
     
     <p>Don't forget that PharoJS allows building HTML apps. Thus, if you require accessing sensitive resources, you are likely to have to define a <a href="https://content-security-policy.com/">content security policy</a> in your HTML file using the <code>meta</code> tag. You can find some examples in <a href="https://stackoverflow.com/questions/30280370/how-does-content-security-policy-work">the Stack overflow response addressing this question</a></p>
   </div>
@@ -314,6 +333,7 @@ if (a.href.substring(0,hash)==href) {
 console.log(a.href);
 a.addEventListener("click",function(e){showIt(a.href.substring(hash));});
 }});
+Array.prototype.slice.call(document.getElementsByClassName("openClose")).forEach(function(ul) {console.log(ul)});
 })();
 </script>
 </body>
