@@ -242,6 +242,7 @@ ul.openClose ul{list-style-image: initial;}
            }</pre>
     This says to import those 2 methods from the <code>Number</code> class.
     This is the user definable version of <code>jsTranspilationImportMethods</code> (for which <code>PjNumber</code> has quite a large implementation) which allows you to augment the list of methods that it imports.
+    You should put this method in <code>PjNumber class</code> with a category of <code>*YourPackage</code> so that it will be associated with your package by Monticello or Iceberg.
     <p>
       We can't import all of e.g. <code>Number</code> or <code>Object</code>, because it would cause considerable code bloat in your application, and because there are methods in some of those classes that cannot be compiled (see the <a href="#differences">question on differences</a>).
     </p>
