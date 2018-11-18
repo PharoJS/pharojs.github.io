@@ -34,9 +34,7 @@
                 e.stopPropagation();
                 e.preventDefault();
                 console.log(e.target);
-                Array.prototype.slice.call(e.target.getElementsByClassName("answer")).
-        forEach(function(ul) {
-                //node.classList.toggle("show");
+                e.target.classList.toggle("show");
             });
         });
 })();
