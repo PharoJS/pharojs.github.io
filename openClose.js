@@ -33,7 +33,9 @@
             ul.addEventListener("click",function(e){
                 e.stopPropagation();
                 e.preventDefault();
-                console.log(e);
+                console.log(e.target);
+                Array.prototype.slice.call(e.target.getElementsByClassName("answer")).
+        forEach(function(ul) {
                 //node.classList.toggle("show");
             });
         });
