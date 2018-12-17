@@ -80,7 +80,25 @@ ul.openClose ul{list-style-image: initial;}
 
   <li><a name="help">Does PharoJS Allow Developping Mobile Apps with Cordova/PhoneGap?</a>
   <div class="answer">
-    Yes. There is a dedicated page that explains  <a href="mobileAppDev.html">how to use PharoJS to make mobile apps for Android and iOS</a>.
+    Yes. There is a dedicated page that explains <a href="mobileAppDev.html">how to use PharoJS to make mobile apps for Android and iOS</a>.
+  </div>
+  </li>
+
+
+  <li><a name="help">Does PharoJS Integrates with Seaside?</a>
+  <div class="answer">
+    Yes. You can install it by evaulating the following in a playground:
+<pre>
+Gofer it
+	smalltalkhubUser: 'noury' project: 'PharoJS';
+	configurationOf: #PharoJsSeaside;
+	loadBleedingEdge.
+</pre>
+
+<p>The code is pretty straight forward. To test it, start Seaside and open 
+<code>http://localhost:8080/PharoJS/</code>.</p>
+
+<p>Please note that with the current PharoJS design, if you have multiple Seaside components with PharoJS code, you'll end up with redundant JS code. The component will work, but it will waste resources...  This will be fixed in the future.</p>
   </div>
   </li>
 
