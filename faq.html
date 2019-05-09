@@ -39,23 +39,18 @@ ul.openClose ul{list-style-image: initial;}
 
   <li><a>How do I install PharoJS?</a>
   <div class="answer">
-    <p>Install can be done inside a <a title="Download Pharo" href="http://pharo.org/download" target="_blank">Pharo 5 image</a> by evaluating the following in a playground:
+    <p>Install can be done inside a <a title="Download Pharo" href="http://pharo.org/download" target="_blank">Pharo 7 image</a> by evaluating the following in a playground:
     <pre>
-    Gofer it
-    smalltalkhubUser: 'noury' project: 'PharoJS';
-    configurationOf: #PharoJS ;
-    loadBleedingEdge.
+Metacello new 
+    baseline: 'PharoJS';
+    repository: 'github://bouraqadi/PharoJS';
+    load
     </pre>
-
-    This will install the most recent public version.
-    To install the latest stable version, please use <code>loadStable</code> instead of <code>loadBleedingEdge</code>.
-    </p>
+</p>
     <p>
     Upon install, Pharo will download HTML code for examples.
-    The are located in the <code>PharoJS-master</code> foloder along with the image and the change file. It contains subfolders for each example and test.
-    </p>
-    <p>
-    After installation you should run all of the PharoJS test to verify that your setup is working correctly.
+    They are located in a folder along with the image and the change files. This is: 
+	<code>pharo-local/iceberg/bouraqadi/PharoJS/HTML</code> It contains subfolders for each example and test.
     </p>
   </div>
   </li>
@@ -63,7 +58,7 @@ ul.openClose ul{list-style-image: initial;}
   <li><a>Does PharoJS work with Pharo6?</a>
   <div class="answer">
     Pharo6 had some stability issues, so we elected to skip Pharo 6.
-    PharoJS will be available on Pharo 7 shortly after it is available.
+    PharoJS is available on Pharo 7.
   </div>
   </li>
 
@@ -74,7 +69,10 @@ ul.openClose ul{list-style-image: initial;}
 
   <li><a>Where can I find the HTML code for App tests (e.g. PjCounterApp and PjMinimalApp)?</a>
   <div class="answer">
-    Some tests require a folder with HTML + CSS + ... files. They can be found in the PharoJS Git repository: <a href="https://github.com/bouraqadi/PharoJS">https://github.com/bouraqadi/PharoJS</a>.
+    Upon PharoJS install, the HTML code for app tests are located in a folder along with the image and the change files. This is: 
+	<code>pharo-local/iceberg/bouraqadi/PharoJS/HTML</code> It contains subfolders for each example and test.
+
+You can be found it also in the PharoJS Git repository, along with Pharo code: <a href="https://github.com/bouraqadi/PharoJS">https://github.com/bouraqadi/PharoJS</a>.
   </div>
   </li>
 
@@ -87,7 +85,11 @@ ul.openClose ul{list-style-image: initial;}
 
   <li><a name="help">Does PharoJS Integrates with Seaside?</a>
   <div class="answer">
-    Yes. You can install it by evaulating the following in a playground:
+    <p>Yes, and no. We had an experimental feature in the provious version of PharoJS for Pharo 5. 
+	It showed the feasibility of the idea, but the solution is not clean.
+	We also did not port it yet to the latest version of PharoJS (on Pharo 7).</p>
+	
+	<p>You can install the experimental code on Pharo 5 by evaulating the following in a playground:</p>
 <pre>
 Gofer it
 	smalltalkhubUser: 'noury' project: 'PharoJS';
