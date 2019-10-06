@@ -115,6 +115,28 @@ Gofer it
   <div class="answer">
     <iframe width="560" height="315" src="https://www.youtube.com/embed/XWd2mCQPZUU?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
   <div class="answer">
+
+  <li><a>How do I contribute to PharoJS?</a>
+  <div class="answer">
+    <p>
+      Since PharoJS is on GitHub, essentially what you do is clone PharoJS, load your clone with Iceberg, make and commit your changes, and then create a pull request. Then Noury or Dave will load your pull request, test it, and put it into the PharoJS repository.
+    </p>
+    <ol>
+      <li>
+        There are 4 external dependencies you need to load first into Iceberg:
+        <ul>
+          <li>From the repository <a href="https://github.com/bouraqadi/PharoMisc">PharoMisc</a> you need to load the packages <code>PharoExtra</code>, <code>LightweightObserver</code> and <code>Equals</code></li>
+          <li>From the repository <a href="https://github.com/svenvc/zinc">zinc</a> you need to load package <code>Zinc-WebSocket-Core</code>.
+        </ul>
+      </li>
+      <li>On GitHub, clone <a href="https://github.com/bouraqadi/PharoJS">PharoJS</a></li>
+      <li>Load your clone into Pharo with Iceberg</li>
+      <li>Load all the packages from your clone</li>
+      <li>apply your changes and commit them to your clone on GitHub</li>
+      <li>go to your clone and issue a pull request</li>
+      <li>wait for your contribution to be incorporated. Thanks!!!</li>
+    </ol>
+  </div>
   </li>
 
   <li><a>Are there any PharoJS goodies (Shirts, Mugs...)?</a>
@@ -227,10 +249,10 @@ Gofer it
     </ul>
     </p>
     <p>
-    The other main thing that comes across the bridge are callbacks.
-    A callback is a reflection of an event occuring on the broswer.
-    The structure for callbacks is created by sending an <code>addEventListener:block:</code> message to a proxy (see the <a href="#addEventListener">question on this</a>).
-    In order to faithfully emulate the Javascript execution model, no callback can happen while an existing callback is executing, or while any initial interaction with the browser is taking place.
+      The other main thing that comes across the bridge are callbacks.
+      A callback is a reflection of an event occuring on the broswer.
+      The structure for callbacks is created by sending an <code>addEventListener:block:</code> message to a proxy (see the <a href="#addEventListener">question on this</a>).
+      In order to faithfully emulate the Javascript execution model, no callback can happen while an existing callback is executing, or while any initial interactionwith the  browser is taking place.
     </p>
   </div>
   </li>
