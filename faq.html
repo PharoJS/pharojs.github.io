@@ -15,7 +15,6 @@ ul.openClose ul{list-style-image: initial;}
 </head>
 
 <body>
-    <script type="text/javascript" src="https://pharojs.atlassian.net/s/d41d8cd98f00b204e9800998ecf8427e-T/-3szkjr/b/c/ced29afba244973b16a7e99d069f29b8/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-US&collectorId=59e53daf"></script>
 	<link rel="stylesheet" type="text/css" href="css/pharoJS.css"/>
 	<div class="pjHeader">
 		<a href="http://pharojs.org"><img alt="PharoJS Logo" src="img/pharoJsBicolorLogo2016-08-12.png"></a>
@@ -86,22 +85,30 @@ You can be found it also in the PharoJS Git repository, along with Pharo code: <
 
   <li><a name="seaside">Does PharoJS Integrates with Seaside?</a>
   <div class="answer">
-    <p>Yes, and no. We had an experimental feature in the provious version of PharoJS for Pharo 5. 
-	It showed the feasibility of the idea, but the solution is not clean.
-	We also did not port it yet to the latest version of PharoJS (on Pharo 7).</p>
+    <p>We have an experimental feature. It shows the feasibility of the idea, but the solution is not clean. That is, if you have multiple Seaside components with PharoJS code, you'll end up with redundant JS code. The component will work, but it will waste resources (network bandwidth). This at least 65KB per component.</p>
+		<p>PharoJS integration with Seaside is defined in a dedicated pacakge <code>PharoJsSeaside</code>. You'll finde below instructions on how to install it.</p>
 	
-	<p>You can install the experimental code on Pharo 5 by evaulating the following in a playground:</p>
+	<ul>
+		<li>Latest version for Pharo 7 and above (GitHub): Evaluate the following code in playground.
+			<pre>
+				Metacello new
+				  baseline: 'PharoJsSeaside';
+				  repository: 'github://bouraqadi/PharoJS';
+				  load
+			</pre>
+		</li>
+	<li>Old version for Pharo 5 (SmalltalkHub): Evalate the following in a playground:
 <pre>
 Gofer it
 	smalltalkhubUser: 'noury' project: 'PharoJS';
 	configurationOf: #PharoJsSeaside;
 	loadBleedingEdge.
 </pre>
+	</li>
+	</ul>
 
 <p>The code is pretty straight forward. To test it, start Seaside and open 
 <code>http://localhost:8080/PharoJS/</code>.</p>
-
-<p>Please note that with the current PharoJS design, if you have multiple Seaside components with PharoJS code, you'll end up with redundant JS code. The component will work, but it will waste resources...  This will be fixed in the future.</p>
   </div>
   </li>
 
@@ -119,23 +126,8 @@ Gofer it
   <li><a>How do I contribute to PharoJS?</a>
   <div class="answer">
     <p>
-      Since PharoJS is on GitHub, essentially what you do is clone PharoJS, load your clone with Iceberg, make and commit your changes, and then create a pull request. Then Noury or Dave will load your pull request, test it, and put it into the PharoJS repository.
+      Since PharoJS is on GitHub, essentially what you do is make a fork of PharoJS, load your fork with Iceberg, make and commit your changes, and then create a pull request. Then Noury or Dave will load your pull request, test it, and put it into the PharoJS repository.
     </p>
-    <ol>
-      <li>
-        There are 4 external dependencies you need to load first into Iceberg:
-        <ul>
-          <li>From the repository <a href="https://github.com/bouraqadi/PharoMisc">PharoMisc</a> you need to load the packages <code>PharoExtra</code>, <code>LightweightObserver</code> and <code>Equals</code></li>
-          <li>From the repository <a href="https://github.com/svenvc/zinc">zinc</a> you need to load package <code>Zinc-WebSocket-Core</code>.
-        </ul>
-      </li>
-      <li>On GitHub, clone <a href="https://github.com/bouraqadi/PharoJS">PharoJS</a></li>
-      <li>Load your clone into Pharo with Iceberg</li>
-      <li>Load all the packages from your clone</li>
-      <li>apply your changes and commit them to your clone on GitHub</li>
-      <li>go to your clone and issue a pull request</li>
-      <li>wait for your contribution to be incorporated. Thanks!!!</li>
-    </ol>
   </div>
   </li>
 
