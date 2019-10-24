@@ -4,7 +4,6 @@
 		<title>Doc | PharoJS</title>
 	</head>
   <body>
-    <script type="text/javascript" src="https://pharojs.atlassian.net/s/d41d8cd98f00b204e9800998ecf8427e-T/-3szkjr/b/c/ced29afba244973b16a7e99d069f29b8/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?locale=en-US&collectorId=59e53daf"></script>
 	<link rel="stylesheet" type="text/css" href="css/pharoJS.css"/>
 	<div class="pjHeader">
 		<a href="http://pharojs.org"><img alt="PharoJS Logo" src="img/pharoJsBicolorLogo2016-08-12.png"></a>
@@ -12,6 +11,7 @@
     </div>
 <h2><a name="cordova">How to Develop Mobile Apps with PharoJS?</a></h2>
 A dedicated page explains through an example how to build a mobile app using PharoJS. It relies on Apache Cordova (formerly PhoneGap) to turn HTML based project into Anroid and iOS applications.
+<br>
 <button onclick="window.open('mobileAppDev.html')">Read More</button>
 
 <h2><a name="esug2018Talk">Talk at the ESUG 2018 Conference, Tuesday 11th September, Cagliari, Italy</a></h2>
@@ -20,6 +20,12 @@ A dedicated page explains through an example how to build a mobile app using Pha
 <div style="text-align:center;">
 <iframe src="https://www.slideshare.net/slideshow/embed_code/key/9KAt1O9l0ixPC7" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/esug/pharojs-pharobased-tdd-for-javascript-applications" title="PharoJS: Pharo-Based TDD for Javascript Applications" target="_blank">PharoJS: Pharo-Based TDD for Javascript Applications</a> </strong> from <strong><a target="_blank" href="https://www.slideshare.net/esug">ESUG</a></strong></div>
 </div>
+
+<h2>IWST 2016 Paper: Mocks, Proxies, and Transpilation as Development Strategies for Web Development</h2>
+<p><em>Abstract:</em> With the advent of HTML 5, we can now develop rich web apps that rival classical standalone apps. This richness together with the portability of web technologies, turned HTML 5 into a viable (and in the case of mobile - essential) solution to develop cross-platform apps. This possibility is heavily dependent on Javascript having acceptable performance, good testability, and a modern development environment. Despite its extensive use in creating highly interactive environments, most Javascript development environments currently use a compile/run paradigm. Similarlily, testing is frequently tacked on, rather than being an integrated part of the development cycle. We propose PharoJS which leverages the Smalltalk IDE with a seamless transition from native Smalltalk tests, through proxied browser tests, to full browser-resident tests. We support the standard eventdriven browser model and transpile Smalltalk code into efficient Javascript for execution in the browser. We further support testing - both manually and automatically - in a range of browsers to provide assured consistency upon deployment. In addition to transpiling the Smalltalk code to Javascript to perform tests in the browser, we can also run non-interactive tests within the Smalltalk environment. The unique feature we provide is the ability to run interactive tests largely within the Smalltalk IDE, so as to fully exploit the debugging and development environment, while the actual interaction occurs on the browser. We exhibit this new mode of development via a simple application.</p>
+
+<br>
+<button onclick="window.open('http://www.esug.org/data/ESUG2016/IWST/Papers/IWST_2016_paper_23.pdf')">Get the PDF</button>
 
 <h2><a name="esug2016Talk">Talk at ESUG 2016 Conference, Monday 22nd August, Prague, Czech Republic</a></h2>
 <p><em>Abstract:</em> PharoJS is an infrastructure (framework + middleware + tools) that allows developping and testing in Smalltalk for applications that will ultimately run on a Javascript interpreter. Unlike to Amber, that runs inside a web browser, PharoJS is built on top of Pharo. Apps are initially buit in the image as pure Pharo objects that run on the Smalltalk virtual machine. The PharoJS middleware allows interacting remotely with third party Javascript objects running on a web browser, or interacting with a web view, particularly for mobile apps. Such interactions are used only during tests. Ultimately, the Smalltalk code is converted to Javascript. So, at the production stage, only a Javascript interpreter is required to run the app. In this talk, we present the current status of PharoJS and its implementation. Through an example, we describe the application development process, with a focus on tests and TDD.</p>
