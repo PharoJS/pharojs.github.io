@@ -128,6 +128,20 @@ Gofer it
     <p>
       Since PharoJS is on GitHub, essentially what you do is make a fork of PharoJS, load your fork with Iceberg, make and commit your changes, and then create a pull request. Then Noury or Dave will load your pull request, test it, and put it into the PharoJS repository.
     </p>
+    <ol>
+      <li>You must have a Github account, let's say: <code>YourName</code></li>
+      <li>On GitHub, clone <a href="https://github.com/bouraqadi/PharoJS">PharoJS</a></li>
+      <li>Then, in a fresh image you evaluate the following
+<pre>Metacello new
+    baseline: 'PharoJS';
+    repository: 'github://YourName/PharoJS';
+    load</pre></li>
+      <li><a href="https://github.com/bouraqadi/pharojs/issues">Create an issue</a> if there isn't one already</li>
+      <li>Create a branch in Iceberg called <code>issue</code><em>nn</em> with the issue number from above</li>
+      <li>Apply your changes in that branch, commit locally, and push them to your clone on GitHub</li>
+      <li>In your browser go to <a href="https://github.com/bouraqadi/PharoJS">PharoJS on github</a> and  click on "new pull request" button. In the drop down, select your pull request + branch</li>
+      <li>Wait for your contribution to be incorporated. Thanks!!!</li>
+    </ol>
   </div>
   </li>
 
