@@ -37,7 +37,7 @@ Metacello new
     <p>
     Upon install, Pharo will download HTML code for examples.
     They are located in a folder along with the image and the change files. This is: 
-	<code>pharo-local/iceberg/bouraqadi/PharoJS/HTML</code> It contains subfolders for each example and test.
+	<code>pharo-local/iceberg/PharoJS/PharoJS/HTML</code> It contains subfolders for each example and test.
     </p>
   </div>
   </li>
@@ -50,7 +50,7 @@ Metacello new
   </li>
   <li><a name="bugs">Where can I report bugs or issues with PharoJS?</a>
   <div class="answer">
-    We are using <a href="https://github.com/bouraqadi/pharojs/issues">GitHub</a>
+    We are using <a href="https://github.com/PharoJS/pharojs/issues">GitHub</a>
   </div>
   </li>
 
@@ -77,9 +77,9 @@ Metacello new
   <li><a>Where can I find the HTML code for App tests (e.g. PjCounterApp and PjMinimalApp)?</a>
   <div class="answer">
     Upon PharoJS install, the HTML code for app tests are located in a folder along with the image and the change files. This is: 
-	<code>pharo-local/iceberg/bouraqadi/PharoJS/HTML</code> It contains subfolders for each example and test.
+	<code>pharo-local/iceberg/PharoJS/PharoJS/HTML</code> It contains subfolders for each example and test.
 
-You can be found it also in the PharoJS Git repository, along with Pharo code: <a href="https://github.com/bouraqadi/PharoJS">https://github.com/bouraqadi/PharoJS</a>.
+You can be found it also in the PharoJS Git repository, along with Pharo code: <a href="https://github.com/PharoJS/PharoJS">https://github.com/PharoJS/PharoJS</a>.
   </div>
   </li>
 
@@ -100,11 +100,11 @@ You can be found it also in the PharoJS Git repository, along with Pharo code: <
 			<pre>
 Metacello new
 	baseline: 'PharoJsSeaside';
-	repository: 'github://bouraqadi/PharoJS';
+	repository: 'github://PharoJS/PharoJS';
 	load
 			</pre>
 		</li>
-	<li>Old version for Pharo 5 (SmalltalkHub): Evalate the following in a playground:
+	<li>Old version for Pharo 5 (SmalltalkHub): Evaluate the following in a playground:
 <pre>
 Gofer it
 	smalltalkhubUser: 'noury' project: 'PharoJS';
@@ -137,16 +137,16 @@ Gofer it
     </p>
     <ol>
       <li>You must have a Github account, let's say: <code>YourName</code></li>
-      <li>On GitHub, clone <a href="https://github.com/bouraqadi/PharoJS">PharoJS</a></li>
+      <li>On GitHub, clone <a href="https://github.com/PharoJS/PharoJS">PharoJS</a></li>
       <li>Then, in a fresh image you evaluate the following
 <pre>Metacello new
     baseline: 'PharoJS';
     repository: 'github://YourName/PharoJS';
     load</pre></li>
-      <li><a href="https://github.com/bouraqadi/pharojs/issues">Create an issue</a> if there isn't one already</li>
+      <li><a href="https://github.com/PharoJS/pharojs/issues">Create an issue</a> if there isn't one already</li>
       <li>Create a branch in Iceberg called <code>issue</code><em>nn</em> with the issue number from above</li>
       <li>Apply your changes in that branch, commit locally, and push them to your clone on GitHub</li>
-      <li>In your browser go to <a href="https://github.com/bouraqadi/PharoJS">PharoJS on github</a> and  click on "new pull request" button. In the drop down, select your pull request + branch</li>
+      <li>In your browser go to <a href="https://github.com/PharoJS/PharoJS">PharoJS on github</a> and  click on "new pull request" button. In the drop down, select your pull request + branch</li>
       <li>Wait for your contribution to be incorporated (posting on <a href="https://pharojs.slack.com/">the PharoJS Slack</a> would be nice). Thanks!!!</li>
     </ol>
   </div>

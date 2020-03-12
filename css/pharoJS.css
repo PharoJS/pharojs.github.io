@@ -16,3 +16,8 @@
 	color: rgb(51,153,235);
 	font-style: italic;
 }
+
+.pjCentered{
+	display:block;
+	margin:auto;
+}
