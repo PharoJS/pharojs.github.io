@@ -3,20 +3,75 @@
 	<head>
 		<title>Success Stories | PharoJS</title>
 	</head>
-  <body>
+	<style>
+		p{
+			text-align: justify; 
+			padding: 15px;
+			font-size: 120%;
+		}
+		.successStory{
+			margin: 5px;
+			margin-bottom: 15px;
+			border: solid 1px gray;
+			border-radius: 5px;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			align-content: space-around;
+		}
+		.projectDescription, .projectFeatureImage{
+			display:inline;
+			padding: 15px;
+		}
+		.projectName{
+			font-size: 150%;
+			font-weight: bold;
+			margin-left: 15px;
+			margin-top: 15px;
+		}
+		.projectFeatureImage{
+			flex-basis: 200px;
+			flex-grow: 0;
+			flex-shrink: 0;
+		}
+		.projectFeatureImage img{
+			width:100%;
+		}
+		.projectDescription{
+			text-align: justify; 
+			font-size: 120%;
+		}
+	</style>
+<body>
 	<link rel="stylesheet" type="text/css" href="css/pharoJS.css"/>
 	<div class="pjHeader">
 		<a href="http://pharojs.org"><img alt="PharoJS Logo" src="img/pharoJsBicolorLogo2016-08-12.png"></a>
 		<h1>Success Stories</h1>
     </div>
- 	
 <p>PharoJS is intended for real world applications. We provide here a list of projects that we are aware of. Please let us know (<a href="https://twitter.com/pharojs" target="_blank">Twitter @pharojs</a>) if your app is not on the list.</p>
 
-<ul>
-	<li><a href="https://nootrix.com/projects/brain-treats-app/"  target="_blank">Brain Treats</a>: Learn, smile and share fun facts. This app is available for both iPhone and Android smartphones. Beside PharoJS, Brain Treas has been built using <a href="http://cordova.apache.org/" target="_blank">Apache Cordova</a>.</li>
-	<li><a href="https://nootrix.com/projects/farmers-market-app/"  target="_blank">Farmers Market</a>: Mobile app for both iOS and Android, based on <a href="http://cordova.apache.org/" target="_blank">Apache Cordova</a>. Provides Geo-coding and GPS navigation based on Google Maps.</li>
-	<li><a href="Demos/MatterJsDemo/index.html" target="_blank">MatterJsDemo</a>: This demo shows that PharoJS can integrate JS code from a third-party library. In this case, the library is the <a href="http://brm.io/matter-js/" target="_blank">MatterJS physics engine</a></li>
-	<li>Other apps are under development and will be listed here soon.</li>
-</ul>
+<div class="projectName"><a href="https://nootrix.com/projects/brain-treats-app/"  target="_blank">Brain Treats</a></div>
+<div class="successStory">
+	<a class="projectFeatureImage" href="https://nootrix.com/projects/brain-treats-app/"  target="_blank"><img src="https://nootrix.com/wp-content/uploads/2020/01/brainTreats.jpg"></a>
+	<div class="projectDescription">Get your daily dose of fun fact. This app is available for both iPhone and Android smartphones. Beside PharoJS, Brain Treas has been built using <a href="http://cordova.apache.org/" target="_blank">Apache Cordova</a>.</div>
+</div>
+<div class="projectName"><a href="https://nootrix.com/projects/farmers-market-app/"  target="_blank">Farmers Market</a></div>
+<div class="successStory">
+	<a class="projectFeatureImage" href="https://nootrix.com/projects/farmers-market-app/"  target="_blank"><img class="projectFeatureImage" src="https://nootrix.com/wp-content/uploads/2019/05/farmersMarketAvailableOnAppleAppStoreAndGooglePlayStore-720x386.jpg"></a>
+	<div class="projectDescription">Mobile app for both iOS and Android, based on <a href="http://cordova.apache.org/" target="_blank">Apache Cordova</a>. Provides Geo-coding and GPS navigation based on Google Maps.</div>
+</div>
+<div class="projectName"><a href="Demos/MatterJsDemo/index.html" target="_blank">MatterJsDemo</a></div>
+<div class="successStory">
+	<a class="projectFeatureImage" href="Demos/MatterJsDemo/index.html" target="_blank"><img src="Demos/MatterJsDemo/img/matterJsLogo.png"></a>
+	<div class="projectDescription">This demo shows that PharoJS can integrate JS code from a third-party library. In this case, the library is the <a href="http://brm.io/matter-js/" target="_blank">MatterJS physics engine</a></div>
+</div>
+
+<!-- <div class="successStory">
+	<div class="projectName"></div>
+	<img class="projectFeatureImage" src="">
+	<div class="projectDescription"></div>
+</div> -->
+
+<p>Other apps are under development and will be listed here soon. Please let us know (<a href="https://twitter.com/pharojs" target="_blank">Twitter @pharojs</a>) if you are aware of some project that should be on the list.</p>
 </body>
 </html>
