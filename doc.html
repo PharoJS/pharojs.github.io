@@ -9,6 +9,35 @@
 		<a href="http://pharojs.org"><img alt="PharoJS Logo" src="img/pharoJsBicolorLogo2016-08-12.png"></a>
 		<h1>Documentation</h1>
     </div>
+<!-- From https://www.youtube.com/watch?v=t4vKPhjcMZg -->
+<!-- Suggestion on how to structure documentation -->
+<div class="directory">
+  <table>
+    <tr><th></th><th>Studying</th><th>Coding</th></tr>
+    <tr>
+      <th>Practical<br>Steps</th>
+      <td><a href="#tutorial">Tutorials</a><br><span class="aside">Learning-Oriented</span></td>
+      <td><a href="#howto">How-To Guides</a><br><span class="aside">Problem-Oriented</span></td>
+    </tr>
+    <tr>
+      <th>Theoretical<br>Knowledge</th>
+      <td><a href="#discussion">Discussions</a><br><span class="aside">Understanding-Oriented</span></td>
+      <td><a href="#reference">Reference</a><br><span class="aside">Information-Oriented</span></td>
+    </tr>
+  </table>
+</div>
+<!-- -->
+<h1><a name="tutorial">Tutorials</a></h1>
+<h2>Getting Started with PharoJS</h2>
+<p><a href="https://medium.com/@richardeng/getting-started-with-pharojs-2d9521fe78dc">Medium Post by Richard Kenneth Eng</a></p>
+<p>PharoJS is a great way to do front-end web development. It offers two tremendous benefits:</p>
+<ul>
+    <li>You get to avoid JavaScript, one of the rightfully most-despised programming languages in the world.</li>
+	<li>You get to use Pharo, the Modern Smalltalk. Why Smalltalk? This is why.</li> 
+</ul>
+<button onclick="window.open('https://medium.com/@richardeng/getting-started-with-pharojs-2d9521fe78dc', '_blank')">Read More</button>
+
+<h1><a name="howto">How-To Guides</a></h1>
 <h2><a name="runningExample">Running PharoJS Examples</a></h2>
 A dedicated page explains through an example how to run PharoJS built-in examples.
 <br>
@@ -20,6 +49,8 @@ A dedicated page explains through an example how to build a mobile app using Pha
 <br>
 <button onclick="window.open('mobileAppDev.html')">Read More</button>
 
+<h1><a name="discussion">Discussions</a></h1>
+
 <h2><a name="esug2018Talk">Talk at the ESUG 2018 Conference, Tuesday 11th September, Cagliari, Italy</a></h2>
 <p><em>Abstract:</em> This talk is an update on PharoJS (http://pharojs.org). It covers the current status of the PharoJS development process, as well as its tools. Through an example, we will describe how to use PharoJS, and how it supports TDD, starting with a Pharo code, and ultimately compiling it to Javascript that runs on a JS interpreter (Web browser, NodeJS...). The talk will also give a glimpse of some recent applications developed using PharoJS, and draw a roadmap for the future of PharoJS.</p>
 <p> The full code of the example is in the <code>PharoJsExamples</code> package under the <code>PhysicsSimulation</code> tag. The HTML code is in folder <code>HTML/PharoJsExamples/PhysicsSim</code></p>
@@ -28,15 +59,6 @@ A dedicated page explains through an example how to build a mobile app using Pha
 <div style="text-align:center;">
 <iframe src="https://www.slideshare.net/slideshow/embed_code/key/9KAt1O9l0ixPC7" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="https://www.slideshare.net/esug/pharojs-pharobased-tdd-for-javascript-applications" title="PharoJS: Pharo-Based TDD for Javascript Applications" target="_blank">PharoJS: Pharo-Based TDD for Javascript Applications</a> </strong> from <strong><a target="_blank" href="https://www.slideshare.net/esug">ESUG</a></strong></div>
 </div>
-
-<h2>Getting Started with PharoJS</h2>
-<p><a href="https://medium.com/@richardeng/getting-started-with-pharojs-2d9521fe78dc">Medium Post by Richard Kenneth Eng</a></p>
-<p>PharoJS is a great way to do front-end web development. It offers two tremendous benefits:</p>
-<ul>
-    <li>You get to avoid JavaScript, one of the rightfully most-despised programming languages in the world.</li>
-	<li>You get to use Pharo, the Modern Smalltalk. Why Smalltalk? This is why.</li> 
-</ul>
-<button onclick="window.open('https://medium.com/@richardeng/getting-started-with-pharojs-2d9521fe78dc', '_blank')">Read More</button>
 
 <h2>IWST 2016 Paper: Mocks, Proxies, and Transpilation as Development Strategies for Web Development</h2>
 <p><em>Abstract:</em> With the advent of HTML 5, we can now develop rich web apps that rival classical standalone apps. This richness together with the portability of web technologies, turned HTML 5 into a viable (and in the case of mobile - essential) solution to develop cross-platform apps. This possibility is heavily dependent on Javascript having acceptable performance, good testability, and a modern development environment. Despite its extensive use in creating highly interactive environments, most Javascript development environments currently use a compile/run paradigm. Similarlily, testing is frequently tacked on, rather than being an integrated part of the development cycle. We propose PharoJS which leverages the Smalltalk IDE with a seamless transition from native Smalltalk tests, through proxied browser tests, to full browser-resident tests. We support the standard eventdriven browser model and transpile Smalltalk code into efficient Javascript for execution in the browser. We further support testing - both manually and automatically - in a range of browsers to provide assured consistency upon deployment. In addition to transpiling the Smalltalk code to Javascript to perform tests in the browser, we can also run non-interactive tests within the Smalltalk environment. The unique feature we provide is the ability to run interactive tests largely within the Smalltalk IDE, so as to fully exploit the debugging and development environment, while the actual interaction occurs on the browser. We exhibit this new mode of development via a simple application.</p>
@@ -54,5 +76,10 @@ A dedicated page explains through an example how to build a mobile app using Pha
 
 <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/nmRPSb0t9lw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </div>
+
+<h1><a name="reference">Reference</a></h1>
+We don't currently have reference material available.
+<br>
+<hr>
 </body>
 </html>

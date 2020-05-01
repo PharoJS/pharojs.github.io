@@ -21,3 +21,15 @@
 	display:block;
 	margin:auto;
 }
+.aside {
+	color: #bbb;
+}
+.directory {
+	margin: 2ex auto;
+	width: 50%;
+	font-size: 200%;
+}
+h1 {
+	text-align: center;
+	margin-top: 4ex;
+}
