@@ -61,11 +61,13 @@ Metacello new
   </div>
   </li>
 
-  <li><a>Does PharoJS work with Pharo6 or earlier?</a>
-  <div class="answer">
-    Pharo6 had some stability issues, so we elected to skip Pharo 6.
-    PharoJS is available on Pharo 7.
-    It also ran on Pharo 5, but all new development is in Pharo 7.
+  <li><a>What versions of Pharo does PharoJS work with?</a>
+    <div class="answer">
+      PharoJS is pretty intimately connected to the Pharo compiler, so supporting multiple versions can be tricky.
+      PharoJS is available on Pharo 7 and Pharo8 right now... it will be available on Pharo9 soon and then all development will be done there.
+      We will support Pharo7 and Pharo8 as long as feasible. If you need it there and it breaks, let us know and we'll fix it if we reasonably can.
+      Pharo6 had some stability issues, so we elected to skip Pharo 6.
+      It also ran on Pharo 5, but it's been a long time since we tested it there. It's also hosted on <a href="http://smalltalkhub.com/">http://smalltalkhub.com/</a> but that will disappear at the end of 2020, so this will no longer work.
   </div>
   </li>
 
@@ -79,7 +81,7 @@ Metacello new
     Upon PharoJS install, the HTML code for app tests are located in a folder along with the image and the change files. This is: 
 	<code>pharo-local/iceberg/PharoJS/PharoJS/HTML</code> It contains subfolders for each example and test.
 
-You can be found it also in the PharoJS Git repository, along with Pharo code: <a href="https://github.com/PharoJS/PharoJS">https://github.com/PharoJS/PharoJS</a>.
+        You can also find it in the PharoJS Git repository, along with Pharo code: <a href="https://github.com/PharoJS/PharoJS">https://github.com/PharoJS/PharoJS</a>.
   </div>
   </li>
 
@@ -93,18 +95,17 @@ You can be found it also in the PharoJS Git repository, along with Pharo code: <
   <li><a name="seaside">Does PharoJS Integrates with Seaside?</a>
   <div class="answer">
     <p>We have an experimental feature. It shows the feasibility of the idea, but the solution is not clean. That is, if you have multiple Seaside components with PharoJS code, you'll end up with redundant JS code. The component will work, but it will waste resources (network bandwidth). This at least 65KB per component.</p>
-		<p>PharoJS integration with Seaside is defined in a dedicated pacakge <code>PharoJsSeaside</code>. You'll finde below instructions on how to install it.</p>
-	
-	<ul>
-		<li>Latest version for Pharo 7 and above (GitHub): Evaluate the following code in playground.
-			<pre>
-Metacello new
-	baseline: 'PharoJsSeaside';
-	repository: 'github://PharoJS/PharoJS';
-	load
-			</pre>
-		</li>
-	<li>Old version for Pharo 5 (SmalltalkHub): Evaluate the following in a playground:
+    <p>PharoJS integration with Seaside is defined in a dedicated package <code>PharoJsSeaside</code>. You'll find below instructions on how to install it.</p>
+    <ul>
+      <li>Latest version for Pharo 7 and above (GitHub): Evaluate the following code in playground.
+	<pre>
+          Metacello new
+	      baseline: 'PharoJsSeaside';
+	      repository: 'github://PharoJS/PharoJS';
+	      load
+</pre>
+      </li>
+      <li>Old version for Pharo 5 (SmalltalkHub): Evaluate the following in a playground:
 <pre>
 Gofer it
 	smalltalkhubUser: 'noury' project: 'PharoJS';
