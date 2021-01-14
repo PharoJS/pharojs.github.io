@@ -290,6 +290,8 @@ Gofer it
       <li><code>become:</code> is unsupported.</li>
       <li>Primitives are not supported.</li>
       <li>There are no processes.</li>
+      <li><code>SequenceableCollection&gt;&gt;reverse</code> is defined by ANSI Smalltalk to make a copy, but ECMAScript (aka Javascript) defines it to reverse in place. Instead you should use <code>reversed</code> which is defined in Pharo and PharoJS to return a copy.</li>
+      <li><code>asArray</code> always returns a copy of the receiver, whereas in Pharo <code>Array&gt;&gt;asArray</code> returns <code>self</code>. <code>Array</code>s and <code>OrderedCollection</code>s are the same thing in PharoJS, so outside of tests, it is probably better to use <code>asOrderedCollection</code>, but this also always returns a copy.</li>
     </ul>
   </div>
   </li>
