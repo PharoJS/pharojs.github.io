@@ -2,16 +2,35 @@
 <html>
 	<head>
 		<title>Demos | PharoJS</title>
- </head>
-  <body>
+		<style>
+			.demo{
+				text-align: center;
+				display: inline-block;
+				margin: auto;
+				width: 400px;
+				vertical-align: top;
+			}
+			.demo img{
+				width:100%;
+			}
+		</style>
 	<link rel="stylesheet" type="text/css" href="css/pharoJS.css"/>
+</head>
+  <body>
 	<div class="pjHeader">
 		<a href="http://pharojs.org"><img alt="PharoJS Logo" src="img/pharoJsBicolorLogo2016-08-12.png"></a>
 		<h1>Demos</h1>
     </div>
-<ul>
-	<li><a href="Demos/MatterJsDemo/index.html">MatterJs</a> - Using the matter.js physics engine</li>
-</ul>
+	<div style="text-align: center;">
+	<a href="Demos/MatterJsDemo/index.html" class="demo">
+		<h2>MatterJS Physics Engine</h2>
+		<img src="img/matterJsDemo.png">
+	</a>
+	<a href="Demos/D3JsDemo/index.html"  class="demo">
+		<h2>D3JS Data Visualisation Library</h2>
+		<img src="img/d3JsDemo.png">
+	</a>
+</div>
   </body>
 </html>
 <!--
