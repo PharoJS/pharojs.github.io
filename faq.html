@@ -383,6 +383,13 @@ Gofer it
   </div>
   </li>
 
+  <li><a>I can't open an exported app, even when I have the HTML: <code> CORS security error</code></a>
+  <div class="answer">
+    <p>On Firefox, open <code>about:config</code> and then enter the setting <code>privacy.file_unique_origin</code>, as <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSRequestNotHttp">explained here</a>.</p>
+    <p>Similar problem on Chrome <code>URL scheme must be "http" or "https" for CORS request.</code> - See <a href="https://stackoverflow.com/questions/3102819/disable-same-origin-policy-in-chrome">this stackoverflow answer</a></p>
+  </div>
+  </li>
+
     <li><a>When I run the tests, browser windows don't get closed.</a>
       <div class="answer">
         This is a security feature noticed in Chrome and Firefox.
