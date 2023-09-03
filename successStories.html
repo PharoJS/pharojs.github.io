@@ -1,130 +1,187 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Success Stories | PharoJS</title>
-	</head>
-	<style>
-		p{
-			text-align: justify; 
-		}
-		p, h4 {
-			font-size: 130%;
-			padding: 5px;
-		} 
-		h4{
-			color: #040404;
-		}
-		.successStory{
-			margin: 5px;
-			margin-bottom: 15px;
-			border: solid 1px gray;
-			border-radius: 5px;
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-			align-content: space-around;
-		}
-		.projectDescription, .projectFeatureImage{
-			display:inline;
-			padding: 15px;
-		}
-		.projectName{
-			font-size: 160%;
-			font-weight: bold;
-			margin-left: 15px;
-			margin-top: 15px;
-		}
-		.projectFeatureImage{
-			flex-basis: 200px;
-			flex-grow: 0;
-			flex-shrink: 0;
-		}
-		.projectFeatureImage img{
-			width:100%;
-		}
-	</style>
+
+<head>
+	<title>Success Stories & Demos | PharoJS</title>
+</head>
+<style>
+	p {
+		text-align: justify;
+	}
+
+	p,
+	h4 {
+		font-size: 130%;
+		padding: 5px;
+	}
+
+	h4 {
+		color: #040404;
+	}
+
+	.successStory {
+		margin: 5px;
+		margin-bottom: 15px;
+		border: solid 1px gray;
+		border-radius: 5px;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		align-content: space-around;
+	}
+
+	.projectDescription,
+	.projectFeatureImage {
+		display: inline;
+		padding: 15px;
+	}
+
+	.projectName {
+		font-size: 160%;
+		font-weight: bold;
+		margin-left: 15px;
+		margin-top: 15px;
+	}
+
+	.projectFeatureImage {
+		flex-basis: 200px;
+		flex-grow: 0;
+		flex-shrink: 0;
+	}
+
+	.projectFeatureImage img {
+		width: 100%;
+	}
+	.demo{
+				text-align: center;
+				display: inline-block;
+				margin: auto;
+				width: 400px;
+				vertical-align: top;
+			}
+			.demo img{
+				width:100%;
+			}
+</style>
+
 <body>
-	<link rel="stylesheet" type="text/css" href="css/pharoJS.css"/>
+	<link rel="stylesheet" type="text/css" href="css/pharoJS.css" />
 	<div class="pjHeader">
 		<a href="http://pharojs.org"><img alt="PharoJS Logo" src="img/pharoJsBicolorLogo2016-08-12.png"></a>
-		<h1>Success Stories</h1>
-    </div>
-<p>PharoJS is intended for real world applications. We provide here a list of projects that we are aware of. Please let us know (<a href="https://twitter.com/pharojs" target="_blank">Twitter @pharojs</a>) if your app is not on the list.</p>
+	</div>
+	<p>PharoJS is intended for real world applications. We provide here a list of projects that we are aware of. Please
+		let us know (<a href="https://twitter.com/pharojs" target="_blank">X (aka Twitter) @pharojs</a>) if your app is not on
+		the list.</p>
+
+	<h1>Commercial Products</h1>
+
+	<div class="projectName"><a href="https://en.apptivegrid.de/" target="_blank">ApptiveGrid</a></div>
+	<div class="successStory">
+		<a class="projectFeatureImage" href="https://en.apptivegrid.de/" target="_blank"><img
+				src="img/apptiveGrid.svg"></a>
+		<div class="projectDescription">
+			<h4>Digitise Your Processes Today</h4>
+			<p>ApptiveGrid is your key to digitization. It's an easy-to-use no-code tool that lets you create
+				customized, automated digital apps for your tasks, saving you time and making your work more efficient.
+				With ApptiveGrid, the solution is just a few clicks away - all in one central platform trusted by over
+				1800 customers. <a href="https://en.apptivegrid.de/" target="_blank">Start now free of charge!</a></p>
+		</div>
+	</div>
+
+	<div class="projectName"><a href="https://plc3000.com/" target="_blank">PLC3000</a></div>
+	<div class="successStory">
+		<a class="projectFeatureImage" href="https://plc3000.com/" target="_blank"><img src="img/plc3000.jpg"></a>
+		<div class="projectDescription">
+			<h4>All-in-One Solution for Teaching Factory Automation</h4>
+			<p>PLC3000 is the 1st turnkey web solution for industrial automation training. It combines pedagogical
+				content with interactive and engaging programmable simulated benches implemented using PharoJS.
+				Being 100% online, PLC3000 requires only a web browser. It can be used to teach remotely, in person or
+				hybrid classes. It works even for large groups of students. <a
+					href="https://plc3000.com/demo-request-en/" target="_blank">Request your free demo!</a>
+			</p>
+		</div>
+		<img style="width:200px" src="img/esug3rdTechAward2023Text.jpg">
+	</div>
+
+	<div class="projectName"><a href="https://nootrix.com/projects/brain-treats-app/" target="_blank">Brain Treats</a>
+	</div>
+	<div class="successStory">
+		<a class="projectFeatureImage" href="https://nootrix.com/projects/brain-treats-app/" target="_blank"><img
+				src="https://nootrix.com/wp-content/uploads/2020/01/brainTreats.jpg"></a>
+		<div class="projectDescription">
+			<h4>Your Daily Dose of Fun Facts</h4>
+			<p>Swipe left or right to navigate a database of astonishing facts and real amazing anecdotes. You can share
+				via your favorite messaging app, your preffered facts.</p>
+			<p>Mobile app for both iOS and Android, based on <a href="http://cordova.apache.org/" target="_blank">Apache
+					Cordova</a></p>
+		</div>
+	</div>
+	<div class="projectName"><a href="https://nootrix.com/projects/farmers-market-app/" target="_blank">Farmers
+			Market</a></div>
+	<div class="successStory">
+		<a class="projectFeatureImage" href="https://nootrix.com/projects/farmers-market-app/" target="_blank"><img
+				class="projectFeatureImage"
+				src="https://nootrix.com/wp-content/uploads/2019/05/farmersMarketAvailableOnAppleAppStoreAndGooglePlayStore-720x386.jpg"></a>
+		<div class="projectDescription">
+			<h4>Find Fresh Locally Grown Food</h4>
+			<p>This app provides geo-coding to allow you find nearby farmers markets. It relies on Google Maps for GPS
+				navigation to guide you to your preferred market where you can buy fresh food directly from farmers.</p>
+			<p>Mobile app for both iOS and Android, based on <a href="http://cordova.apache.org/" target="_blank">Apache
+					Cordova</a></p>
+		</div>
+	</div>
+
+	<h1>Open-Source Software</h1>
+	<div class="projectName"><a href="https://covid.cs.ryerson.ca/compare/" target="_blank">Covid-19 Tracker</a></div>
+	<div class="successStory">
+		<a class="projectFeatureImage" href="https://covid.cs.ryerson.ca/compare/" target="_blank"><img
+				src="img/covid19TrackerWithPharoJS.jpg"></a>
+		<div class="projectDescription">
+			<h4>Track the Covid-19 Pandemic</h4>
+			<p>Web app that show graphs for cases, deaths and recoveries for the Covid-19 all around the world. Choose
+				multiple countries and regions to compare them.</p>
+			<p>Retreives the latest COVID-19 data <a href="https://github.com/CSSEGISandData/COVID-19/"
+					target="_blank">from John Hopkins University's repository on GitHub</a>.</p>
+		</div>
+	</div>
 
 	<div class="projectName"><a href="https://pharojs.org/repl" target="_blank">Smalltalk REPL using PharoJS</a></div>
-<div class="successStory">
-	<a class="projectFeatureImage" href="https://pharojs.org/repl"  target="_blank"><img src="img/stReplInPharoJS.jpg"></a>
-	<div class="projectDescription">A simple REPL written in PharoJS. This is a client-server application. 
-		<p>The Pharo code you type is sent to the server where it is transpiled to JS and sent back to the web browser where it runs.
-		You can link to an Smalltalk expression as in : <a href="https://pharojs.org/repl#3+4*5">https://pharojs.org/repl#3+4*5</a>.</p>
-		<p>This project was done to support the Smalltalk side of <a href="https://programming-idioms.org/">https://programming-idioms.org/</a>. 
-		We encourage you to extend the Smalltalk support from that site - for example to help add Smalltalk equivalents for the idioms, and/or demos using the REPL.</p>
-	</div>
-	</div>
-<div class="projectName"><a href="https://plc3000.com/" target="_blank">PLC3000</a></div>
-<div class="successStory">
-	<a class="projectFeatureImage" href="https://plc3000.com/"  target="_blank"><img src="img/plc3000.jpg"></a>
-	<div class="projectDescription">
-		<h4>Teaching PLC Programming Made Easy</h4>
-		<p>PLC3000 is a SaaS solution for teaching PLC programming for factory automation. It provides a collection of exercises, development tools and programmable simulated benches. Being 100% online, it requires only a web browser, and can be used to teach remotely, in person or hybrid classes. It works even for large groups of students. </p>
-	</div>
-</div>
-
-<div class="projectName"><a href="https://covid.cs.ryerson.ca/compare/" target="_blank">Covid-19 Tracker</a></div>
-<div class="successStory">
-	<a class="projectFeatureImage" href="https://covid.cs.ryerson.ca/compare/"  target="_blank"><img src="img/covid19TrackerWithPharoJS.jpg"></a>
-	<div class="projectDescription">
-		<h4>Track the Covid-19 Pandemic</h4>
-		<p>Web app that show graphs for cases, deaths and recoveries for the Covid-19 all around the world. Choose multiple countries and regions to compare them.</p>
-		<p>Retreives the latest COVID-19 data <a href="https://github.com/CSSEGISandData/COVID-19/" target="_blank">from John Hopkins University's repository on GitHub</a>.</p>
-	</div>
-</div>
-
-<div class="projectName"><a href="https://nootrix.com/projects/brain-treats-app/"  target="_blank">Brain Treats</a></div>
-<div class="successStory">
-	<a class="projectFeatureImage" href="https://nootrix.com/projects/brain-treats-app/"  target="_blank"><img src="https://nootrix.com/wp-content/uploads/2020/01/brainTreats.jpg"></a>
-	<div class="projectDescription">
-		<h4>Your Daily Dose of Fun Facts</h4>
-		<p>Swipe left or right to navigate a database of astonishing facts and real amazing anecdotes. You can share via your favorite messaging app, your preffered facts.</p>
-		<p>Mobile app for both iOS and Android, based on <a href="http://cordova.apache.org/" target="_blank">Apache Cordova</a></p>
-	</div>
-</div>
-<div class="projectName"><a href="https://nootrix.com/projects/farmers-market-app/"  target="_blank">Farmers Market</a></div>
-<div class="successStory">
-	<a class="projectFeatureImage" href="https://nootrix.com/projects/farmers-market-app/"  target="_blank"><img class="projectFeatureImage" src="https://nootrix.com/wp-content/uploads/2019/05/farmersMarketAvailableOnAppleAppStoreAndGooglePlayStore-720x386.jpg"></a>
-	<div class="projectDescription">
-		<h4>Find Fresh Locally Grown Food</h4>
-		<p>This app provides geo-coding to allow you find nearby farmers markets. It relies on Google Maps for GPS navigation to guide you to your preferred market where you can buy fresh food directly from farmers.</p>
-		<p>Mobile app for both iOS and Android, based on <a href="http://cordova.apache.org/" target="_blank">Apache Cordova</a></p>
-	</div>
-</div>
-<div class="projectName"><a href="Demos/MatterJsDemo/index.html" target="_blank">MatterJs Physics Simulation</a></div>
-<div class="successStory">
-	<a class="projectFeatureImage" href="Demos/MatterJsDemo/index.html" target="_blank"><img src="Demos/MatterJsDemo/img/matterJsLogo.png"></a>
-	<div class="projectDescription">
-		<h4>Gravity in Action</h4>
-		<p>
-			This demo shows that PharoJS can integrate JS code from a third-party library. In this case, the library is the <a href="http://brm.io/matter-js/" target="_blank">MatterJS physics engine</a>
-		</p>
+	<div class="successStory">
+		<a class="projectFeatureImage" href="https://pharojs.org/repl" target="_blank"><img
+				src="img/stReplInPharoJS.jpg"></a>
+		<div class="projectDescription">
+			<h4>A simple REPL written in PharoJS. </h4>
+			<p>This is a client-server application. The Pharo code you type is sent to the server where it is transpiled
+				to JS and sent back to the web
+				browser where it runs.
+				You can link to an Smalltalk expression as in : <a
+					href="https://pharojs.org/repl#3+4*5">https://pharojs.org/repl#3+4*5</a>.</p>
+			<p>This project was done to support the Smalltalk side of <a
+					href="https://programming-idioms.org/">https://programming-idioms.org/</a>.
+				We encourage you to extend the Smalltalk support from that site - for example to help add Smalltalk
+				equivalents for the idioms, and/or demos using the REPL.</p>
 		</div>
-</div>
-<div class="projectName"><a href="Demos/PjThreeJsDemo/index.html" target="_blank">3D Interactive Graphics</a></div>
-<div class="successStory">
-	<a class="projectFeatureImage" href="Demos/PjThreeJsDemo/index.html" target="_blank"><img src="img/threeJsDemoCubeAlone.jpg"></a>
-	<div class="projectDescription">
-		<h4>Scene with 3D Objects</h4>
-		<p>
-			Anything you can do in JS, you can do it in Pharo, thanks to PharoJS. Here we make a 3D interactive scene by linking to the open-source library <a href="https://threejs.org/" target="_blank">ThreeJS</a>
-		</p>
-		</div>
-</div>
+	</div>
 
-<!-- <div class="successStory">
-	<div class="projectName"></div>
-	<img class="projectFeatureImage" src="">
-	<div class="projectDescription"></div>
-</div> -->
+	<h1>Demos</h1>
+	<p>Anything you can do in JS, you can do it in Pharo, thanks to PharoJS. PharoJS allow reusing and extending in
+		Pharo any third-party library developped in JavaScript. Here are some examples. The code for these and more is available in the <a
+			href="https://github.com/PharoJS/PharoJS" target="_blank">PharoJS GitHub repository.</a></p>
+	<div style="text-align: center;">
+		<a href="Demos/MatterJsDemo/index.html" class="demo">
+			<h2>MatterJS Physics Engine</h2>
+			<img src="img/matterJsDemo.png">
+		</a>
+		<a href="Demos/D3JsDemo/index.html" class="demo">
+			<h2>D3JS Data Visualisation Library</h2>
+			<img src="img/d3JsDemo.png">
+		</a>
+		<a href="Demos/PjThreeJsDemo/index.html" class="demo">
+			<h2>ThreeJS 3D Graphics Library</h2>
+			<img src="img/threeJsDemo.png">
+		</a>
+	</div>
 
-<p>Other apps are under development and will be listed here soon. Please let us know (<a href="https://twitter.com/pharojs" target="_blank">Twitter @pharojs</a>) if you are aware of some project that should be on the list.</p>
 </body>
+
 </html>
